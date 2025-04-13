@@ -1,0 +1,280 @@
+    /* Estilos gerais mantidos */
+    .hero-section {
+        display: flex;
+        align-items: center;
+        padding: 5px 0;
+        position: relative;
+        background: #f9f9f9;
+    }
+
+    .elementor-background-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.02);
+        z-index: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .column {
+        flex: 1;
+        min-width: 300px;
+        padding: 20px;
+        position: relative;
+    }
+
+    .left {
+        max-width: 50%;
+    }
+
+    .right {
+        max-width: 50%;
+        text-align: center;
+    }
+
+    /* Estilo para a imagem da mulher */
+    .woman-img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+
+
+    /* Container principal das barras em colunas */
+    .behavior-bars-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 500px; /* Ajuste conforme necessário */
+        margin: 0 auto;
+    }
+
+    /* Colunas das barras */
+    .behavior-column {
+        flex: 0 0 48%; /* Largura das colunas */
+    }
+
+    /* Container das barras com borda estilizada */
+    .behavior-bars-container {
+        border: 5px solid #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Estilos das barras individuais */
+    .behavior-bar {
+        margin-top: 15px;
+    }
+
+    .behavior-bar:first-child {
+        margin-top: 0;
+    }
+
+    .label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.9rem;
+    }
+
+    .progress {
+        background: #eee;
+        height: 18px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+    background: #42B14B;
+    height: 100%;
+    color: #ffffff; /* Mudando para preto */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centralizando o texto */
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 10px 0 0 10px;
+    padding: 0; /* Removendo o padding direito */
+    text-align: center; /* Garantindo centralização */
+    position: relative; /* Para posicionamento absoluto do texto */
+}
+
+    /* Outros estilos (títulos, botões, animações) mantidos */
+    .hero-section h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+
+    .hero-section p {
+        font-size: 1.1rem;
+        margin: 20px 0;
+    }
+
+    .highlight {
+        color: #42B14B;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background: #42B14B;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    /* Animações */
+    .animated {
+        opacity: 0;
+        animation-fill-mode: both;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInDown {
+        from {
+            transform: translateY(-40px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInLeft {
+        from {
+            transform: translateX(-40px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInRight {
+        from {
+            transform: translateX(40px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            transform: translateY(40px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .fadeIn {
+        animation-name: fadeIn;
+    }
+
+    .slideInDown {
+        animation-name: slideInDown;
+    }
+
+    .slideInLeft {
+        animation-name: slideInLeft;
+    }
+
+    .slideInRight {
+        animation-name: slideInRight;
+    }
+
+    .slideInUp {
+        animation-name: slideInUp;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .behavior-bars-container {
+            flex-direction: column;
+            max-width: 100%;
+        }
+        
+        .behavior-column {
+            flex: 0 0 100%;
+        }
+        
+        .behavior-column:first-child {
+            margin-bottom: 15px;
+        }
+    }
+
+
+
+
+
+.overlay-img {
+    position: absolute;
+    width: 100%; /*  toda a seção */
+    height: 100%;
+    object-fit: cover; /* cobre toda a área sem distorcer */
+    z-index: 0; /* fica atrás de tudo */
+    pointer-events: none; /* evita que o SVG bloqueie cliques nos elementos acima */
+    opacity: 0.06; /* ajuste a opacidade conforme necessário */
+}
+
+/* Certifique-se que os demais elementos tenham z-index > 0 ou não tenham nenhum (que já vem acima por padrão) */
+.elementor-background-overlay,
+.container,
+.column,
+.behavior-bars-overlay {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-add-job {
+    background-color: #42B14B;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.btn-add-job:hover {
+    background-color: #25D366;
+}
+
+

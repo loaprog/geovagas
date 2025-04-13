@@ -1,0 +1,232 @@
+/* ===== CONTACT PAGE STYLES ===== */
+.contact-hero-section {
+    background:#f9f9f9;
+    padding: 150px 0 80px;
+     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/wp-content/uploads/2024/04/overlay.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.06; /* ajuste a opacidade conforme necessário */
+    z-index: 0;
+}
+
+.contact-hero-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-options-section {
+    padding: 80px 0;
+ }
+
+ .about-hero-section .container, 
+ .contact-hero-section .container {
+     position: relative;
+     z-index: 1;
+ }
+ 
+   
+   .about-hero-section h1, .contact-hero-section h1 {
+     font-size: 3rem;
+     margin-bottom: 1rem;
+   }
+   
+  
+   .subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-color);
+    max-width: 700px;
+    margin: 0 auto;
+    color: #6c757d;
+  }
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+    font-size: 2.5rem;
+    color: #42B14B;
+    margin-bottom: 20px;
+}
+
+.contact-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #42B14B;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #36923D;
+}
+
+.contact-form-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.contact-form {
+    max-width: 700px;
+    margin: 50px auto 0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #E9ECEF;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #42B14B;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-faq-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.faq-accordion {
+    max-width: 800px;
+    margin: 50px auto 0;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border: none;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #42B14B;
+}
+
+.faq-question i {
+    transition: all 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 20px;
+    background: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-answer p {
+    padding-bottom: 20px;
+    color: #6C757D;
+}
+
+.faq-item.active .faq-question {
+    color: #42B14B;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    padding: 0 20px 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-hero-section {
+        padding: 120px 0 60px;
+    }
+    
+    .contact-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+}
