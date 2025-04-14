@@ -188,3 +188,45 @@ function initAll() {
     initCompaniesCarousel();
     initLazyLoading();
 }
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos do menu
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.dt-mobile-header');
+    const closeMenuBtn = document.querySelector('.dt-close-mobile-menu-icon');
+    
+    // Verifica se os elementos existem antes de adicionar event listeners
+    if (mobileMenuToggle && mobileMenu) {
+        // Abrir menu ao clicar no hamburguer
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            document.body.classList.add('no-scroll');
+        });
+    }
+
+    if (closeMenuBtn && mobileMenu) {
+        // Fechar menu ao clicar no botão de fechar
+        closeMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+    }
+
+    // Fechar menu ao clicar em um link (opcional)
+    const mobileLinks = document.querySelectorAll('.mobile-main-nav a');
+    if (mobileLinks.length > 0) {
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (mobileMenu) {
+                    mobileMenu.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+        });
+    }
+});
