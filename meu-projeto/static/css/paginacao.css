@@ -1,0 +1,97 @@
+/* Estilos para a paginação - Versão melhorada */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    gap: 8px;
+    width: 100%;
+}
+
+.pagination-btn {
+    padding: 10px 16px;
+    background-color: #42B14B;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: #3a9a42;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.pagination-btn:disabled {
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 6px;
+    margin: 0 10px;
+}
+
+.page-number {
+    padding: 8px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    transition: all 0.3s ease;
+    min-width: 40px;
+    text-align: center;
+}
+
+.page-number:hover:not(.active) {
+    background-color: #f0f0f0;
+    border-color: #d0d0d0;
+}
+
+.page-number.active {
+    background-color: #42B14B;
+    color: white;
+    border-color: #42B14B;
+    font-weight: 600;
+}
+
+.page-number.ellipsis {
+    border: none;
+    cursor: default;
+    padding: 8px 6px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .pagination-container {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    
+    .page-numbers {
+        order: 1;
+        width: 100%;
+        justify-content: center;
+        margin: 10px 0;
+    }
+    
+    .pagination-btn {
+        padding: 8px 12px;
+    }
+    
+    .page-number {
+        padding: 6px 10px;
+        min-width: 36px;
+    }
+}

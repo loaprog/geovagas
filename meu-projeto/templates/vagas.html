@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR" prefix="og: https://ogp.me/ns#" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Vagas - GeoVagas</title>
+    <meta name="description" content="Encontre vagas na área de geotecnologias e mapeamento.">
+    
+    <link rel="icon" href="../static/wp-content/uploads/2024/04/icone.jpg" type="image/jpeg">
+    
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/animation.css">
+    <link rel="stylesheet" href="../static/css/sobre.css">
+    <link rel="stylesheet" href="../static/css/vagas.css">
+    <link rel="stylesheet" href="../static/css/filter.css">
+    <link rel="stylesheet" href="../static/css/paginacao.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body id="the7-body">
+    <header class="header-bar">
+        <div class="branding">
+            <div class="mobile-menu-toggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+    
+            <a href="index">
+                <img src="../static/wp-content/uploads/2024/04/mobile1.png" alt="GeoVagas" class="logo">
+            </a>
+        </div>
+    
+        <ul id="primary-menu" class="main-nav">
+            <li><a href='index'>Início</a></li>
+            <li><a href='sobre'>Sobre</a></li>
+            <li><a href='contato'>Contato</a></li>
+            <li><a href='mundogis'>MundoGIS</a></li>
+            <li><a href='vagas' style="color: #42B14B; font-weight: bold;">Vagas</a></li>
+        </ul>
+    </header>
+
+    <div class="dt-mobile-header">
+        <div class="dt-close-mobile-menu-icon" aria-label="Close" role="button" tabindex="0">
+            <div class="close-line-wrap">
+                <span class="close-line"></span>
+                <span class="close-line"></span>
+                <span class="close-line"></span>
+            </div>
+        </div>
+        <ul id="mobile-menu" class="mobile-main-nav">
+            <li><a href='index'>Início</a></li>
+            <li><a href='sobre'>Sobre</a></li>
+            <li><a href='contato'>Contato</a></li>
+            <li><a href='mundogis'>MundoGIS</a></li>
+            <li><a href='vagas' style="color: #42B14B; font-weight: bold;">Vagas</a></li>
+        </ul>
+    </div>
+
+    <main id="main">
+        <section class="about-hero-section">
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <h1>Encontre sua<span class="highlight"> Oportunidade</span></h1>
+                <p class="subtitle">Vagas exclusivas na área de geotecnologias e mapeamento</p>
+            </div>
+        </section>
+
+        <section class="quick-search-section">
+            <div class="container">
+                <div class="quick-search-container">
+                    <div class="search-fields">
+                        <div class="search-group">
+                            <label for="job-search"><i class="fas fa-search"></i> Qual vaga você procura?</label>
+                            <input type="text" id="job-search" placeholder="Digite o nome da vaga ou cargo">
+                        </div>
+                        
+                        <div class="search-group">
+                            <label for="state-search"><i class="fas fa-map-marker-alt"></i> Estado</label>
+                            <select id="state-search" class="state-select">
+                                <option value="">Todos os estados</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                        
+                        <button id="quick-search-btn" class="btn-primary">
+                            <i class="fas fa-search"></i> Buscar Vagas
+                        </button>
+
+                        <button id="reset-filters-btn" class="btn-secondary">
+                            <i class="fas fa-times"></i> Limpar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-jobs-section">
+            <div class="container">
+                <h2>Vagas <span class="highlight">Destaque</span></h2>
+                
+                <div class="jobs-list" id="featured-jobs-container">
+                    <div class="loading-jobs">
+                        <i class="fas fa-spinner fa-spin"></i> Carregando vagas em destaque...
+                    </div>
+                </div>
+            </div>
+            <div class="pagination-container" id="pagination-container">
+                <button id="prev-page" class="pagination-btn" disabled>
+                    <i class="fas fa-chevron-left"></i> 
+                </button>
+                <div class="page-numbers" id="page-numbers"></div>
+                <button id="next-page" class="pagination-btn">
+                     <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="../static/wp-content/uploads/2024/04/mobile2.png" alt="GeoVagas">
+            </div>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/leonardo-alve/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../static/js/index.js"></script>
+    <script src="../static/js/vagas.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</body>
+</html>
