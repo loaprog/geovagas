@@ -1,4 +1,3 @@
-// internal/handlers/home_handler.go
 package handlers
 
 import (
@@ -15,7 +14,6 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Se quiser passar dados para o template, pode substituir "nil" por um struct/map
 	err = tmpl.Execute(w, nil)
 	if err != nil {
 		log.Printf("Erro ao renderizar template: %v", err)

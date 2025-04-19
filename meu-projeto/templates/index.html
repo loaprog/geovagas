@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="../static/css/sobre.css">
     <link rel="stylesheet" href="../static/css/vagas.css">
     <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/banco_cv.css">
+    <link rel="stylesheet" href="../static/css/adicionar_vagas.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 
 
@@ -89,7 +92,9 @@
                         Cadastre seu currículo respondendo a poucas perguntas e <span class="highlight">receba as melhores oportunidades</span> diretamente para você, de acordo com suas habilidades e interesses</span>
 
                     </p>
-                    <a href="#solucoes" class="btn-primary">CADASTRE SEU CURRÍCULO</a>
+                    <!-- <a href="#solucoes" class="btn-primary">CADASTRE SEU CURRÍCULO</a> -->
+                    <a href="#" class="btn-primary" id="openCurriculoBtn">CADASTRE SEU CURRÍCULO</a>
+
                 </div>
 
                 <!-- Coluna da Imagem -->
@@ -140,22 +145,199 @@
     </section>
 </main>
 
-<!-- Adicionar a biblioteca Typed.js -->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-    // Configuração do efeito de troca de palavras
-    var options = {
-        strings: ["Geoprocessamento", "Tecnologia", "Inovação"], // Palavras que você quer alternar
-        typeSpeed: 100, // Velocidade da digitação
-        backSpeed: 100, // Velocidade de apagamento
-        backDelay: 1000, // Delay antes de apagar a palavra
-        startDelay: 500, // Delay antes de começar a digitar
-        loop: true // Loop infinito
-    };
 
-    var typed = new Typed("#dynamic-text", options); // Aplica a animação ao id do span
-</script>
+
+
+
+
+
+
+
+
+
+
+        <!-- Modal para o formulário de currículo -->
+        <div class="modal-overlay" id="curriculoModal">
+            <div class="modal-content">
+                <button class="close-modal" id="closeModal">&times;</button>
+                <section class="curriculo-section">
+                    <div class="container">
+                        <h2>Cadastre seu currículo em <span class="highlight">menos de 2 minutos</span></h2>
+                        <p>Preencha os campos abaixo e aumente suas chances de ser encontrado pelas melhores empresas</p>
+                        
+                        <form id="curriculo-form" class="curriculo-form" enctype="multipart/form-data">
+                            <div class="form-grid">
+                                <!-- Dados Pessoais -->
+                                <div class="form-group">
+                                    <label for="nome">Nome Completo*</label>
+                                    <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">E-mail*</label>
+                                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="telefone">Telefone/WhatsApp*</label>
+                                    <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cidade">Cidade*</label>
+                                    <input type="text" id="cidade" name="cidade" required placeholder="Ex: Araçatuba">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="estado">Estado*</label>
+                                    <select id="estado" name="estado" required>
+                                        <option value="" disabled selected>Selecione um estado</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cargo">Cargo desejado*</label>
+                                    <input type="text" id="cargo" name="cargo" required placeholder="Ex: Analista de Dados">
+                                </div>
+                                
+                                <!-- Upload de Currículo -->
+                                <div class="form-group full-width">
+                                    <label for="curriculo">Anexe seu currículo (PDF)*</label>
+                                    <input type="file" id="curriculo" name="curriculo" accept=".pdf" required>
+                                    <small>Tamanho máximo: 5MB</small>
+                                </div>
+                                
+<!-- Habilidades Técnicas -->
+<div class="form-group full-width">
+    <h3>Seu nível de conhecimento em:</h3>
+
+    <div class="skill-level">
+        <label>QGIS</label>
+        <div class="skill-options">
+            <label><input type="radio" name="qgis" value="basico"> Básico</label>
+            <label><input type="radio" name="qgis" value="intermediario"> Intermediário</label>
+            <label><input type="radio" name="qgis" value="avancado"> Avançado</label>
+        </div>
+    </div>
+
+    <div class="skill-level">
+        <label>ArcGIS</label>
+        <div class="skill-options">
+            <label><input type="radio" name="arcgis" value="basico"> Básico</label>
+            <label><input type="radio" name="arcgis" value="intermediario"> Intermediário</label>
+            <label><input type="radio" name="arcgis" value="avancado"> Avançado</label>
+        </div>
+    </div>
+
+    <div class="skill-level">
+        <label>AutoCAD</label>
+        <div class="skill-options">
+            <label><input type="radio" name="autocad" value="basico"> Básico</label>
+            <label><input type="radio" name="autocad" value="intermediario"> Intermediário</label>
+            <label><input type="radio" name="autocad" value="avancado"> Avançado</label>
+        </div>
+    </div>
+
+    <div class="skill-level">
+        <label>Python</label>
+        <div class="skill-options">
+            <label><input type="radio" name="python" value="basico"> Básico</label>
+            <label><input type="radio" name="python" value="intermediario"> Intermediário</label>
+            <label><input type="radio" name="python" value="avancado"> Avançado</label>
+        </div>
+    </div>
+
+    <div class="skill-level">
+        <label>Inglês</label>
+        <div class="skill-options">
+            <label><input type="radio" name="ingles" value="basico"> Básico</label>
+            <label><input type="radio" name="ingles" value="intermediario"> Intermediário</label>
+            <label><input type="radio" name="ingles" value="avancado"> Avançado</label>
+        </div>
+    </div>
+
+    <!-- Habilidades de Comunicação -->
+    <div class="skill-level">
+        <label>Facilidade de falar em público</label>
+        <div class="skill-options">
+            <label><input type="radio" name="falar_publico" value="baixa"> Baixa</label>
+            <label><input type="radio" name="falar_publico" value="media"> Média</label>
+            <label><input type="radio" name="falar_publico" value="alta"> Alta</label>
+        </div>
+    </div>
+
+
+    <!-- Confiança para entrevistas -->
+    <div class="skill-level">
+        <label>Você se sente confiante para participar de uma entrevista de emprego?</label>
+        <div class="skill-options">
+            <label><input type="radio" name="confiante_entrevista" value="nao"> Não</label>
+            <label><input type="radio" name="confiante_entrevista" value="pouco">Um Pouco</label>
+            <label><input type="radio" name="confiante_entrevista" value="sim"> Sim</label>
+        </div>
+    </div>
+
+</div>
+
+                                
+                                <!-- Termos e Envio -->
+                                <div class="form-group full-width termos">
+                                    <label>
+                                        <input type="checkbox" name="termos" required>
+                                        Concordo em receber comunicações sobre vagas e treinamentos*
+                                    </label>
+                                    <button type="submit" class="btn-primary">ENVIAR CURRÍCULO</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -201,6 +383,46 @@
     <div class="container">
         <h2>Vagas <span class="highlight">Destaque</span></h2>
         
+<!-- Botão para divulgar vaga -->
+<div class="divulgar-vaga-container" style="text-align: center; margin-bottom: 40px; margin-top: 20px;">
+    <button id="abrirModalVaga" class="btn-primary" style="font-size: 16px; padding: 12px 25px; font-family: 'Roboto', sans-serif">
+        <i class="fas fa-bullhorn" style="font-size: 16px; margin-right: 8px;"></i> DIVULGAR VAGA
+    </button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="jobs-list" id="featured-jobs-container">
             <!-- As vagas serão carregadas aqui dinamicamente -->
             <div class="loading-jobs">
@@ -211,12 +433,18 @@
         <div class="text-center">
             <a href="vagas" class="btn-primary">Clique aqui e veja todas as vagas disponíveis!</a>
         </div>
+
+<!-- Aviso sobre remoção de vagas -->
+<div class="remocao-vaga-notice" style="text-align: center; margin: 20px 0; font-size: 14px; color: #6c757d;">
+    <p>É responsável por alguma vaga listada e deseja removê-la? <br>
+    Entre em contato pelo e-mail <a href="mailto:contato@geovagas.com.br" style="color: #42B14B; text-decoration: none;">loa_ava@hotmail.com</a></p>
+</div>
+
     </div>
 </section>
 
         </main>
 
-                
 
 
     <!-- Footer -->
@@ -234,6 +462,10 @@
     <!-- JavaScript -->
     <script src="../static/js/index.js"></script>
     <script src="../static/js/vagas_destaque.js"></script>
+    <script src="../static/js/banco_cv.js"></script>
+    <script src="../static/js/adicionar_vagas.js"></script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 </body>
@@ -241,4 +473,4 @@
 </body>
 </html>
 
- 
+  

@@ -17,7 +17,8 @@ func main() {
 	}
 	defer db.Close()
 
-	// ✅ Servir arquivos estáticos da pasta "static"
+	cvHandler := handlers.NewCVBankHandler(db)
+
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	
@@ -32,6 +33,14 @@ func main() {
 	// Endpoints
 	http.HandleFunc("/job-posts", handlers.JobPostsHandler(db))
 	http.HandleFunc("/job-suggestions", handlers.JobSuggestionsHandler(db))
+	http.HandleFunc("/api/curriculos", func(w http.ResponseWriter, r *http.Request) {
+		switch r.Method {
+		case http.MethodPost:
+			cvHandler.CreateCV(w, r)
+		default:
+			http.Error(w, "Método não permitido", http.StatusMethodNotAllowed)
+		}
+	})
 
 	log.Println("Servidor rodando na porta 8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {

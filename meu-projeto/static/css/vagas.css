@@ -28,7 +28,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: #42B14B;
+    background: #25D366;
     border-radius: 2px;
 }
 
@@ -85,7 +85,7 @@
 
 .job-meta i {
     margin-right: 5px;
-    color: #42B14B;
+    color: #25D366;
 }
 
 .job-description {
@@ -114,7 +114,7 @@
 
 .btn-primary {
     display: inline-block;
-    background: #42B14B;
+    background: #25D366;
     color: white;
     padding: 8px 20px;
     border-radius: 4px;
@@ -126,7 +126,7 @@
 }
 
 .btn-primary:hover {
-    background: #36923D;
+    background: #25D366;
 }
 
 /* Paginação */
@@ -153,9 +153,9 @@
 
 .pagination a:hover,
 .pagination a.active {
-    background: #42B14B;
+    background: #25D366;
     color: white;
-    border-color: #42B14B;
+    border-color: #25D366;
 }
 
 /* Responsividade */

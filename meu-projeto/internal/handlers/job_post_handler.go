@@ -11,7 +11,6 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-// Função para formatar a data de criação em uma string legível
 func timeAgo(createdAt time.Time) string {
 	now := time.Now()
 	duration := now.Sub(createdAt)
@@ -29,7 +28,6 @@ func timeAgo(createdAt time.Time) string {
 	}
 }
 
-// Função que lida com requisições GET para "job posts"
 func JobPostsHandler(db *pgxpool.Pool) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {

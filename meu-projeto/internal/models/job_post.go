@@ -2,7 +2,6 @@ package models
 
 import "time"
 
-// Modelo de JobPost para manipulação interna
 type JobPost struct {
 	ID              int       `json:"id"`
 	Title           string    `json:"title"`
@@ -17,7 +16,6 @@ type JobPost struct {
 	Location_stay   string    `json:"location_stay"`
 }
 
-// Modelo para formatar a resposta com os dados que serão enviados
 type JobPostResponse struct {
 	ID              int       `json:"vaga"`
 	Title           string    `json:"vaga_nome"`

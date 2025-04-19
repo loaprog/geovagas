@@ -1,0 +1,242 @@
+/* Estilos para o modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+    
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #333;
+}
+
+/* Estilos para o formulário dentro do modal */
+.modal-content .vagas-section {
+    padding: 0;
+}
+
+.modal-content .container {
+    padding: 0;
+    width: 100%;
+}
+
+.modal-content .vagas-form {
+    margin: 0;
+    box-shadow: none;
+    padding: 0;
+}
+
+.modal-content .form-grid {
+    grid-template-columns: 1fr;
+}
+
+.modal-content .form-group.full-width {
+    grid-column: span 1;
+}
+
+@media (min-width: 768px) {
+    .modal-content .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .modal-content .form-group.full-width {
+        grid-column: span 2;
+    }
+}
+
+/* Estilos existentes para o formulário */
+.vagas-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    
+    top: 20px;
+    position: relative;
+    z-index: 1;
+
+}
+
+.form-grid {
+    display: grid;
+    gap: 20px;    
+}
+
+.form-group {
+    margin-bottom: 20px;
+
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-align: left;
+    
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.form-group input[type="file"] {
+    padding: 10px 15px;
+}
+
+.skill-level {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.skill-level label {
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.skill-options {
+    display: flex;
+    gap: 20px;
+}
+
+.skill-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.termos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.termos label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.termos input[type="checkbox"] {
+    width: auto;
+}
+
+ 
+
+
+@media (max-width: 768px) {
+    .skill-options {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .skill-options label {
+        justify-content: center;
+        font-size: 14px;
+    }
+}
+
+
+/* Estilo para o botão desabilitado */
+.btn-disabled {
+    background-color: #cccccc !important;
+    cursor: not-allowed !important;
+    opacity: 0.7;
+    pointer-events: none;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 10px;
+    color: #666666;
+}
+
+/* Estilo para o checkbox não marcado */
+.termos label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: #42B14B; /* Vermelho quando não marcado */
+    transition: color 0.3s;
+}
+
+.termos input[type="checkbox"]:checked + label {
+    color: #42B14B; /* Verde quando marcado */
+}
+
+/* Destaque visual para o checkbox */
+.termos input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #42B14B; /* Cor do checkbox quando marcado */
+}
+ 
+
+/* Estilo para o botão de ALERTA */
+.custom-swal-popup {
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.swal2-title {
+    color: #42B14B;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+    .custom-swal-popup {
+        border-radius: 15px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .swal2-title {
+        color: #42B14B;
+    }
+}
