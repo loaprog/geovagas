@@ -1,0 +1,57 @@
+# Arquivos JSON (ex: credenciais)
+*.json
+
+# Byte-compiled / cache / logs
+__pycache__/
+*.py[cod]
+*.log
+
+# Virtual environments
+venv/
+.env/
+.env.bak/
+*.env
+
+# Config do VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Arquivos de pacotes
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Arquivos temporários
+*.swp
+*.swo
+*.bak
+*.tmp
+*~
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Arquivos SQLite ou similares
+*.sqlite3
+*.db
+
+# Arquivos de testes
+coverage/
+.tox/
+.nox/
+.pytest_cache/
+
+# Arquivos de ferramentas
+.mypy_cache/
+.pyre/
+.pytype/
+
+# Arquivos de dependência
+Pipfile.lock
+poetry.lock
