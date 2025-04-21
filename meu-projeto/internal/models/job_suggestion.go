@@ -12,5 +12,7 @@ type JobSuggestion struct {
 	Tags             []string  `json:"tags"`
 	SuggestedByEmail string    `json:"suggested_by_email"`
 	CreatedAt        time.Time `json:"created_at"`
-	IsApproved       bool      `json:"is_approved"`
+	FullDescription  string    `json:"full_description"`
+	LocationStay     string    `json:"location_stay"`
+	Whatsapp         string    `json:"whatsapp"`
 }

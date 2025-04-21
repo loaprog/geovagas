@@ -75,6 +75,8 @@
             </ul>
         </div>
 
+
+        
 <!-- Main Content -->
 <main id="main">
     <!-- Hero Section -->
@@ -153,19 +155,13 @@
 
 
 
-
-
-
-
-
-
         <!-- Modal para o formulário de currículo -->
         <div class="modal-overlay" id="curriculoModal">
             <div class="modal-content">
                 <button class="close-modal" id="closeModal">&times;</button>
                 <section class="curriculo-section">
                     <div class="container">
-                        <h2>Cadastre seu currículo em <span class="highlight">menos de 2 minutos</span></h2>
+                        <h2>Cadastre seu <span class="highlight">currículo</span></h2>
                         <p>Preencha os campos abaixo e aumente suas chances de ser encontrado pelas melhores empresas</p>
                         
                         <form id="curriculo-form" class="curriculo-form" enctype="multipart/form-data">
@@ -400,21 +396,108 @@
 
 
 
+<!-- Modal para o formulário de vagas -->
+<div class="modal-overlay" id="vagaModal">
+    <div class="modal-content">
+        <button class="close-modal" id="closeVagaModal">&times;</button>
+        <section class="vaga-section">
+            <div class="container">
+                <h2>Divulgue sua vaga na <span class="highlight">GeoVagas</span></h2>
+                <p>Preencha os campos abaixo para divulgar sua oportunidade para milhares de profissionais qualificados</p>
+                
+                <form id="vaga-form" class="vaga-form" enctype="multipart/form-data">
+                    <div class="form-grid">
+                        <!-- Dados da Empresa -->
+                        <div class="form-group">
+                            <label for="empresa">Nome da Empresa*</label>
+                            <input type="text" id="empresa" name="empresa" required placeholder="Ex: Geo Solutions">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email_empresa">E-mail para contato*</label>
+                            <input type="email" id="email_empresa" name="email_empresa" required placeholder="contato@empresa.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefone_empresa">Telefone/WhatsApp*</label>
+                            <input type="tel" id="telefone_empresa" name="telefone_empresa" required placeholder="(00) 00000-0000">
+                        </div>
+                        
+                        <!-- Detalhes da Vaga -->
+                        <div class="form-group">
+                            <label for="titulo_vaga">Título da Vaga*</label>
+                            <input type="text" id="titulo_vaga" name="titulo_vaga" required placeholder="Ex: Analista GIS Pleno">
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                            <label for="cidade">Cidade*</label>
+                            <input type="text" id="cidade" name="cidade" required placeholder="Ex: Araçatuba">
+                        </div>
+                        
 
+                        <div class="form-group">
+                            <label for="estado">Estado*</label>
+                            <select id="estado" name="estado" required>
+                                <option value="" disabled selected>Selecione um estado</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Descrição da Vaga -->
+                        <div class="form-group full-width">
+                            <label for="descricao">Descrição da Vaga*</label>
+                            <textarea id="descricao" name="descricao" rows="5" required placeholder="Descreva as atividades, responsabilidades e requisitos da vaga"></textarea>
+                        </div>
+                        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        <!-- Como se candidatar -->
+                        <div class="form-group full-width">
+                            <label for="como_candidatar">Como se candidatar*</label>
+                            <textarea id="como_candidatar" name="como_candidatar" rows="3" required placeholder="Ex: Enviar CV para email@empresa.com com assunto 'Vaga Analista GIS'"></textarea>
+                        </div>
+                        
+                        
+                        <!-- Termos e Envio -->
+                        <div class="form-group full-width termos">
+                            <label>
+                                <input type="checkbox" name="termos_vaga" required>
+                                Confirmo que as informações fornecidas são verdadeiras e autorizo a publicação desta vaga*
+                            </label>
+                            <button type="submit" class="btn-primary" id="submitVagaBtn">PUBLICAR VAGA</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
 
 
 
@@ -437,7 +520,7 @@
 <!-- Aviso sobre remoção de vagas -->
 <div class="remocao-vaga-notice" style="text-align: center; margin: 20px 0; font-size: 14px; color: #6c757d;">
     <p>É responsável por alguma vaga listada e deseja removê-la? <br>
-    Entre em contato pelo e-mail <a href="mailto:contato@geovagas.com.br" style="color: #42B14B; text-decoration: none;">loa_ava@hotmail.com</a></p>
+    Entre em contato pelo e-mail <a href="mailto:contato@geovagas.com.br" style="color: #42B14B; text-decoration: none;">leonardo_deoliver@hotmail.com</a></p>
 </div>
 
     </div>
