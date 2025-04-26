@@ -207,7 +207,7 @@ async function loadFeaturedJobs() {
         console.error('Erro ao carregar vagas:', error);
         container.innerHTML = `
             <div class="error-loading">
-                Não foi possível carregar as vagas
+                Nenhuma vaga em destaque no momento. Volte mais tarde!
                 <button onclick="loadFeaturedJobs()" class="retry-btn">Tentar novamente</button>
                 <p class="error-detail">${error.message}</p>
             </div>

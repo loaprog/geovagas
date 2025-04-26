@@ -90,7 +90,7 @@ async function loadFeaturedJobs() {
     } catch (error) {
         console.error('Erro ao carregar vagas:', error);
         
-        let errorMessage = 'Não foi possível carregar as vagas';
+        let errorMessage = 'Nenhuma vaga em destaque no momento. Volte mais tarde!';
         if (error.name === 'AbortError') {
             errorMessage = 'A requisição demorou muito. Verifique sua conexão';
             console.error('Timeout na requisição');
@@ -99,13 +99,13 @@ async function loadFeaturedJobs() {
             console.error('Falha na conexão com o servidor');
         }
 
-        container.innerHTML = `
-            <div class="error-loading">
-                ${errorMessage}
-                ${error.message ? `<p class="error-detail">${error.message}</p>` : ''}
-               <button onclick="loadFeaturedJobs()" class="retry-btn">Tentar novamente</button>
-            </div>
-        `;
+        // container.innerHTML = `
+        //     <div class="error-loading">
+        //         ${errorMessage}
+        //         ${error.message ? `<p class="error-detail">${error.message}</p>` : ''}
+        //        <button onclick="loadFeaturedJobs()" class="retry-btn">Tentar novamente</button>
+        //     </div>
+        // `;
     }
 }
 
