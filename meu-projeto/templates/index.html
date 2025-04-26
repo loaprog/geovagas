@@ -51,7 +51,7 @@
             <li><a href='index' style="color: #42B14B; font-weight: bold;">Início</a></li>
             <li><a href='sobre'>Sobre</a></li>
             <li><a href='contato'>Contato</a></li>
-            <li><a href='mundogis'>MundoGIS</a></li>
+            <!-- <li><a href='mundogis'>MundoGIS</a></li> -->
             <li><a href='vagas'>Vagas</a></li>
         </ul>
     </header>
@@ -69,7 +69,7 @@
                 <li><a href='index' style="color: #42B14B; font-weight: bold;">Início</a></li>
                 <li><a href='sobre'>Sobre</a></li>
                 <li><a href='contato'>Contato</a></li>
-                <li><a href='mundogis'>MundoGIS</a></li>
+                <!-- <li><a href='mundogis'>MundoGIS</a></li> -->
                 <li><a href='vagas'>Vagas</a></li>
                 <!-- Mobile menu items -->
             </ul>
@@ -89,7 +89,7 @@
                 
                 <!-- Coluna de Texto -->
                 <div class="column left">
-                    <h1 class="animated fadeIn">Somos uma <span class="highlight">plataforma</span> que conecta e desenvolve talentos para o setor de <br> <span id="dynamic-text" class="highlight"></span></h1>
+                    <h1 class="animated fadeIn">Somos uma <span class="highlight">plataforma</span> que conecta e desenvolve talentos para o setor de <span id="dynamic-text" class="highlight"></span></h1>
                     <p class="animated fadeIn" style="animation-delay: 0.2s; color: #6c757d">
                         Cadastre seu currículo respondendo a poucas perguntas e <span class="highlight">receba as melhores oportunidades</span> diretamente para você, de acordo com suas habilidades e interesses</span>
 
@@ -431,14 +431,14 @@
                         
                         
                         <div class="form-group">
-                            <label for="cidade">Cidade*</label>
-                            <input type="text" id="cidade" name="cidade" required placeholder="Ex: Araçatuba">
+                            <label for="cidade_empresa">Cidade da Empresa*</label>
+                            <input type="text" id="cidade_empresa" name="cidade_empresa" required placeholder="Ex: Araçatuba">
                         </div>
                         
 
                         <div class="form-group">
-                            <label for="estado">Estado*</label>
-                            <select id="estado" name="estado" required>
+                            <label for="estado_empresa">Estado da Empresa*</label>
+                            <select id="estado_empresa" name="estado_empresa" required>
                                 <option value="" disabled selected>Selecione um estado</option>
                                 <option value="AC">Acre</option>
                                 <option value="AL">Alagoas</option>
@@ -547,6 +547,7 @@
     <script src="../static/js/vagas_destaque.js"></script>
     <script src="../static/js/banco_cv.js"></script>
     <script src="../static/js/adicionar_vagas.js"></script>
+    
 
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>

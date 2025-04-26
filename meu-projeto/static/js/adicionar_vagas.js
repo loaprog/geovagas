@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Lista de campos obrigatórios (ajustada para os campos atuais no HTML)
     const requiredVagaFields = [
         'empresa', 'email_empresa', 'telefone_empresa', 
-        'titulo_vaga', 'cidade', 'estado',
+        'titulo_vaga', 'cidade_empresa', 'estado_empresa',
         'descricao', 'como_candidatar'
     ];
     
@@ -198,12 +198,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     const vagaData = {
                         title: document.getElementById('titulo_vaga').value,
                         company_name: document.getElementById('empresa').value,
-                        location: `${document.getElementById('cidade').value}, ${document.getElementById('estado').value}`,
+                        location: `${document.getElementById('cidade_empresa').value}, ${document.getElementById('estado_empresa').value}`,
                         description: document.getElementById('descricao').value,
                         application_link: document.getElementById('como_candidatar').value,
                         suggested_by_email: document.getElementById('email_empresa').value,
                         full_description: document.getElementById('descricao').value,
-                        location_stay: document.getElementById('estado').value,
+                        location_stay: document.getElementById('estado_empresa').value,
                         whatsapp: document.getElementById('telefone_empresa').value,
                     };
 

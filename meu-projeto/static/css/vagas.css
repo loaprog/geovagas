@@ -89,15 +89,25 @@
 }
 
 .job-description {
-    padding: 0 20px;
-    margin-bottom: 20px;
-    flex-grow: 1;
+    padding: 15px;
+    flex-grow: 1; /* Faz a descrição ocupar o espaço disponível */
+    overflow: hidden; /* Esconde conteúdo que ultrapassar */
 }
 
 .job-description p {
+    margin: 0;
     color: #495057;
-    line-height: 1.6;
+    line-height: 1.5;
+    word-wrap: break-word; /* Quebra palavras longas */
+    overflow-wrap: break-word; /* Alternativa moderna */
+    hyphens: auto; /* Adiciona hífens quando necessário */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limita a 3 linhas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adiciona "..." quando o texto é cortado */
 }
+
 
 .job-footer {
     padding: 15px 20px;
@@ -114,7 +124,7 @@
 
 .btn-primary {
     display: inline-block;
-    background: #25D366;
+    /* background: #25D366; */
     color: white;
     padding: 8px 20px;
     border-radius: 4px;
@@ -125,9 +135,9 @@
     cursor: pointer;
 }
 
-.btn-primary:hover {
+/* .btn-primary:hover {
     background: #25D366;
-}
+} */
 
 /* Paginação */
 .pagination {

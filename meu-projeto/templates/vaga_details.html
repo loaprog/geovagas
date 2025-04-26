@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR" prefix="og: https://ogp.me/ns#" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Detalhes da Vaga - GeoVagas</title>
+    <meta name="description" content="Detalhes completos da vaga na área de geotecnologias e mapeamento.">
+    
+    <link rel="icon" href="../static/wp-content/uploads/2024/04/icone.jpg" type="image/jpeg">
+    
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/animation.css">
+    <link rel="stylesheet" href="../static/css/sobre.css">
+    <link rel="stylesheet" href="../static/css/vagas.css">
+    <link rel="stylesheet" href="../static/css/detalhes_vaga.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body id="the7-body">
+    <header class="header-bar">
+        <div class="branding">
+            <div class="mobile-menu-toggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+    
+            <a href="index">
+                <img src="../static/wp-content/uploads/2024/04/mobile1.png" alt="GeoVagas" class="logo">
+            </a>
+        </div>
+        
+
+        <ul id="primary-menu" class="main-nav">
+            <li><a href='/index'>Início</a></li>
+            <li><a href='/sobre'>Sobre</a></li>
+            <li><a href='/contato'>Contato</a></li>
+            <li><a href='/vagas' style="color: #42B14B; font-weight: bold;">Vagas</a></li>
+        </ul>
+    </header>
+
+    <div class="dt-mobile-header">
+        <div class="dt-close-mobile-menu-icon" aria-label="Close" role="button" tabindex="0">
+            <div class="close-line-wrap">
+                <span class="close-line"></span>
+                <span class="close-line"></span>
+                <span class="close-line"></span>
+            </div>
+        </div>
+        <ul id="mobile-menu" class="mobile-main-nav">
+            <li><a href='/index'>Início</a></li>
+            <li><a href='/sobre'>Sobre</a></li>
+            <li><a href='/contato'>Contato</a></li>
+            <li><a href='/vagas' style="color: #42B14B; font-weight: bold;">Vagas</a></li>
+        </ul>
+    </div>
+
+    <main id="main">
+        <section class="job-details-section">
+            <div class="container">
+                <button id="back-button" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Voltar para Vagas
+                </button>
+                
+                <div class="job-details-container">
+                    <div class="loading-details">
+                        <i class="fas fa-spinner fa-spin"></i> Carregando detalhes da vaga...
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="../static/wp-content/uploads/2024/04/mobile2.png" alt="GeoVagas">
+            </div>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/leonardo-alve/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../static/js/detalhes_vaga.js"></script>
+    <script src="../static/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>
+
+<style>
+/* ===== DETALHES DA VAGA ===== */
+    .job-details-section {
+        padding: 40px 0;
+        background: #f9f9f9;
+        min-height: calc(100vh - 200px);
+    }
+    
+    .job-details-section .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #3bb951;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 30px;
+    }
+    
+    .btn-back:hover {
+        background:    #25D366;
+    }
+    
+    .job-details-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    word-wrap: break-word; /* Garante que palavras longas quebrem */
+}
+    
+    .job-details-header {
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .job-details-header h1 {
+        font-size: 2rem;
+        color: #2C3E50;
+        margin-bottom: 10px;
+    }
+    
+    .job-meta-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 15px;
+        color: #6c757d;
+        font-size: 0.95rem;
+    }
+    
+    .job-meta-details span {
+        display: flex;
+        align-items: center;
+    }
+    
+    .job-meta-details i {
+        margin-right: 8px;
+        color: #25D366;
+    }
+    
+    .job-description-details {
+        margin-bottom: 30px;
+    }
+    
+    .job-description-details h2 {
+        font-size: 1.5rem;
+        color: #2C3E50;
+        margin-bottom: 15px;
+    }
+    
+    .job-description-details p {
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 15px;
+        white-space: pre-line;
+    }
+    
+    .job-description-details,
+    .job-how-to-apply,
+    .job-requirements {
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+        
+    .job-requirements h2 {
+        font-size: 1.5rem;
+        color: #2C3E50;
+        margin-bottom: 15px;
+    }
+    
+    .job-requirements ul {
+    padding-left: 20px;
+    color: #495057;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+    
+    .job-how-to-apply {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 6px;
+        margin-top: 30px;
+    }
+    
+    .job-how-to-apply h2 {
+        font-size: 1.5rem;
+        color: #2C3E50;
+        margin-bottom: 15px;
+    }
+    
+    .job-description-details p,
+    .job-how-to-apply p {
+        color: #495057;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        white-space: pre-line; /* Mantém quebras de linha do texto original */
+        word-wrap: break-word; /* Quebra palavras longas */
+        overflow-wrap: break-word; /* Padrão moderno para quebra */
+        hyphens: auto; /* Adiciona hífens quando necessário */
+    }
+    
+    .apply-button-container {
+        margin-top: 30px;
+        text-align: center;
+    }
+    
+    .btn-apply {
+        display: inline-block;
+        background: #25D366;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1.1rem;
+    }
+    
+    .btn-apply:hover {
+        background: #20bd5a;
+    }
+    
+    .loading-details {
+        text-align: center;
+        padding: 50px 0;
+        color: #6c757d;
+        font-size: 1.1rem;
+    }
+    
+    .error-loading {
+        text-align: center;
+        padding: 50px 0;
+        color: #dc3545;
+        font-size: 1.1rem;
+    }
+    
+    .retry-btn {
+        background: #25D366;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        margin-top: 15px;
+        display: inline-block;
+    }
+    
+    @media (max-width: 768px) {
+    .job-details-container {
+        padding: 20px;
+    }
+        
+    .job-details-header h1 {
+        font-size: 1.6rem;
+    }
+        
+    .job-meta-details {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+        /* Ajustes específicos para texto em mobile */
+        .job-description-details p,
+    .job-how-to-apply p,
+    .job-requirements ul {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    }</style>

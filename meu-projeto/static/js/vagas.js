@@ -31,7 +31,7 @@ function createJobCard(job) {
                 <p>${formatDescription(job.descricao)}</p>
             </div>
             <div class="job-footer">
-                <a href="${isEmpty(job.link) ? '#' : job.link}" target="_blank" class="btn-primary" rel="noopener noreferrer">Candidatar-se</a>
+                <a href="/details/${job.vaga}" class="btn-primary">Ver Detalhes</a>
                 <span class="post-date">${isEmpty(job.postada_ha) ? 'Postada recentemente' : job.postada_ha}</span>
             </div>
         </div>
@@ -88,7 +88,6 @@ function renderJobsForCurrentPage() {
         container.innerHTML = `
             <div class="no-jobs">
                 Nenhuma vaga encontrada com os critérios de busca.
-                <button onclick="resetFilters()" class="retry-btn">Limpar filtros</button>
             </div>
         `;
         document.getElementById('pagination-container').style.display = 'none';
@@ -215,6 +214,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('featured-jobs-container')) {
         loadFeaturedJobs();
     }
+
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('view-details-btn')) {
+            const jobId = e.target.getAttribute('data-id');
+            window.location.href = `details?id=${jobId}`;
+        }
+    });
 
     document.getElementById('prev-page').addEventListener('click', () => {
         if (currentPage > 1) {

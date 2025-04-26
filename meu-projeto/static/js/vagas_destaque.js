@@ -28,7 +28,7 @@ function createJobCard(job) {
                 <p>${formatDescription(job.descricao)}</p>
             </div>
             <div class="job-footer">
-                <a href="${isEmpty(job.link) ? '#' : job.link}" target="_blank" class="btn-primary" rel="noopener noreferrer">Candidatar-se</a>
+                <a href="/details/${job.vaga}" class="btn-primary">Ver Detalhes</a>
                 <span class="post-date">${isEmpty(job.postada_ha) ? 'Postada recentemente' : job.postada_ha}</span>
             </div>
         </div>
@@ -102,8 +102,8 @@ async function loadFeaturedJobs() {
         container.innerHTML = `
             <div class="error-loading">
                 ${errorMessage}
-                <button onclick="loadFeaturedJobs()" class="retry-btn">Tentar novamente</button>
                 ${error.message ? `<p class="error-detail">${error.message}</p>` : ''}
+               <button onclick="loadFeaturedJobs()" class="retry-btn">Tentar novamente</button>
             </div>
         `;
     }

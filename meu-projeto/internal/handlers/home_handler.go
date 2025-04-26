@@ -63,6 +63,20 @@ func VagasHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func DetailsHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/vaga_details.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}
+
 func MundoGisHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("templates/mundogis.html")
 	if err != nil {
@@ -76,3 +90,4 @@ func MundoGisHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
 	}
 }
+

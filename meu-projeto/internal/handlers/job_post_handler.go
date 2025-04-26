@@ -5,10 +5,12 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
+	"strings"
 	"time"
 
-	"techvagas/internal/models"
 	"github.com/jackc/pgx/v5/pgxpool"
+	"techvagas/internal/models"
 )
 
 func timeAgo(createdAt time.Time) string {
@@ -105,6 +107,63 @@ func JobPostsHandler(db *pgxpool.Pool) http.HandlerFunc {
 				log.Printf("Erro ao codificar dados em JSON: %v", err)
 				http.Error(w, "Erro ao enviar resposta", http.StatusInternalServerError)
 			}
+		}
+	}
+}
+
+
+
+func JobPostByIDHandler(db *pgxpool.Pool) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Extrai o ID da URL
+		pathParts := strings.Split(r.URL.Path, "/")
+		if len(pathParts) < 3 {
+			http.Error(w, "ID da vaga não fornecido", http.StatusBadRequest)
+			return
+		}
+
+		id, err := strconv.Atoi(pathParts[2])
+		if err != nil {
+			http.Error(w, "ID inválido", http.StatusBadRequest)
+			return
+		}
+
+		query := `
+			SELECT id, title, company_name, location, description, application_link, tags, created_at, is_active, full_description, location_stay
+			FROM techvagas.job_posts
+			WHERE id = $1 AND is_active = true
+		`
+
+		var post models.JobPost
+		err = db.QueryRow(r.Context(), query, id).Scan(
+			&post.ID, &post.Title, &post.CompanyName, &post.Location,
+			&post.Description, &post.ApplicationLink, &post.Tags,
+			&post.CreatedAt, &post.IsActive, &post.FullDescription,
+			&post.Location_stay,
+		)
+		if err != nil {
+			log.Printf("Vaga não encontrada ou erro ao buscar: %v", err)
+			http.Error(w, "Vaga não encontrada", http.StatusNotFound)
+			return
+		}
+
+		postFormatted := models.JobPostResponse{
+			ID:              post.ID,
+			Title:           post.Title,
+			CompanyName:     post.CompanyName,
+			Location:        post.Location,
+			Description:     post.Description,
+			ApplicationLink: post.ApplicationLink,
+			Tags:            post.Tags,
+			PostedAgo:       timeAgo(post.CreatedAt),
+			FullDescription: post.FullDescription,
+			Location_stay:   post.Location_stay,
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		if err := json.NewEncoder(w).Encode(postFormatted); err != nil {
+			log.Printf("Erro ao codificar resposta JSON: %v", err)
+			http.Error(w, "Erro ao enviar resposta", http.StatusInternalServerError)
 		}
 	}
 }

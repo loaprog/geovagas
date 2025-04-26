@@ -29,10 +29,13 @@ func main() {
 	http.HandleFunc("/contato", handlers.ContatoHandler)
 	http.HandleFunc("/mundogis", handlers.MundoGisHandler)
 	http.HandleFunc("/vagas", handlers.VagasHandler)
+	http.HandleFunc("/details/", handlers.DetailsHandler)
 
 	// Endpoints
 	http.HandleFunc("/job-posts", handlers.JobPostsHandler(db))
+	http.HandleFunc("/job-posts/", handlers.JobPostByIDHandler(db))
 	http.Handle("/api/job-suggestions", handlers.JobSuggestionsHandler(db))
+	http.Handle("/api/send-message", handlers.SendMessageHandler(db))
 	http.HandleFunc("/api/curriculos", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodPost:
