@@ -9,7 +9,7 @@ import (
 	"os"
 	"strings"
 	"time"
-
+	"log"
 	"github.com/joho/godotenv"
 	"google.golang.org/api/drive/v3"
 	"google.golang.org/api/option"
@@ -50,6 +50,12 @@ func loadCredentials() ([]byte, error) {
         UniverseDomain:          "googleapis.com",
     }
 
+	log.Println("Credenciais carregadas com sucesso")
+	log.Println("Private Key:", creds.PrivateKey)
+	log.Println("todos os dados:", creds)
+
+
+	// Converte a struct para JSON
     return json.Marshal(creds)
 }
 
