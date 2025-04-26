@@ -1,5 +1,5 @@
 # Arquivos JSON (ex: credenciais)
-# *.json
+*.json
 
 # Byte-compiled / cache / logs
 __pycache__/
