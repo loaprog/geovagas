@@ -4,24 +4,14 @@ import (
 	"context"
 	"log"
 	"net/http"
-	"os"
 	"techvagas/internal/database"
 	"techvagas/internal/handlers"
-	"fmt"
 	"github.com/joho/godotenv"
 )
 
 func main() {
 	_= godotenv.Load()
 	ctx := context.Background()
-
-	// Configuração para produção no Render
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080" 
-	}
-
-	fmt.Println("Porta:", port)
 
 	db, err := database.NewDB(ctx)
 	if err != nil {
@@ -57,9 +47,8 @@ func main() {
 		}
 	})
 
-	log.Println("Servidor rodando na porta 8080")
-	// if err := http.ListenAndServe(":8080", nil); err != nil {
-	if err := http.ListenAndServe(":"+port, nil); err != nil {
+	log.Println("Servidor rodando na porta 10000")
+	if err := http.ListenAndServe(":10000", nil); err != nil {
 		log.Fatalf("Erro ao iniciar o servidor: %v", err)
 	}
 }
