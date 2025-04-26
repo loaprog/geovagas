@@ -30,27 +30,30 @@ type GoogleCredentials struct {
 }
 
 func loadCredentials() ([]byte, error) {
-	err := godotenv.Load()
-	if err != nil {
-		return nil, fmt.Errorf("erro ao carregar .env: %v", err)
-	}
+    // Tenta carregar do .env local (para desenvolvimento)
+    _ = godotenv.Load() // Ignora erro se não encontrar
+    
+    // Substitui quebras de linha se vierem como string literal
+    privateKey := strings.ReplaceAll(os.Getenv("GOOGLE_PRIVATE_KEY"), `\n`, "\n")
 
-	creds := GoogleCredentials{
-		Type:                    os.Getenv("GOOGLE_CREDENTIALS_TYPE"),
-		ProjectID:               os.Getenv("GOOGLE_PROJECT_ID"),
-		PrivateKeyID:            os.Getenv("GOOGLE_PRIVATE_KEY_ID"),
-		PrivateKey:              os.Getenv("GOOGLE_PRIVATE_KEY"),
-		ClientEmail:             os.Getenv("GOOGLE_CLIENT_EMAIL"),
-		ClientID:                os.Getenv("GOOGLE_CLIENT_ID"),
-		AuthURI:                 os.Getenv("GOOGLE_AUTH_URI"),
-		TokenURI:                os.Getenv("GOOGLE_TOKEN_URI"),
-		AuthProviderX509CertURL: os.Getenv("GOOGLE_AUTH_PROVIDER_CERT_URL"),
-		ClientX509CertURL:       os.Getenv("GOOGLE_CLIENT_CERT_URL"),
-		UniverseDomain:          "googleapis.com",
-	}
+    creds := GoogleCredentials{
+        Type:                    os.Getenv("GOOGLE_CREDENTIALS_TYPE"),
+        ProjectID:               os.Getenv("GOOGLE_PROJECT_ID"),
+        PrivateKeyID:            os.Getenv("GOOGLE_PRIVATE_KEY_ID"),
+        PrivateKey:              privateKey,
+        ClientEmail:             os.Getenv("GOOGLE_CLIENT_EMAIL"),
+        ClientID:                os.Getenv("GOOGLE_CLIENT_ID"),
+        AuthURI:                 os.Getenv("GOOGLE_AUTH_URI"),
+        TokenURI:                os.Getenv("GOOGLE_TOKEN_URI"),
+        AuthProviderX509CertURL: os.Getenv("GOOGLE_AUTH_PROVIDER_CERT_URL"),
+        ClientX509CertURL:       os.Getenv("GOOGLE_CLIENT_CERT_URL"),
+        UniverseDomain:          "googleapis.com",
+    }
 
-	return json.Marshal(creds)
+    return json.Marshal(creds)
 }
+
+
 
 // UploadFile faz o upload de um arquivo para o Google Drive e retorna o link público.
 func UploadFile(nome string, file multipart.File, filename string) (string, error) {
