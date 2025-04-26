@@ -203,15 +203,9 @@ async function loadFeaturedJobs() {
         currentPage = 1;
         renderJobsForCurrentPage();
 
-    } catch (error) {
+    }
+     catch (error) {
         console.error('Erro ao carregar vagas:', error);
-        container.innerHTML = `
-            <div class="error-loading">
-                Nenhuma vaga em destaque no momento. Volte mais tarde!
-                <button onclick="loadFeaturedJobs()" class="retry-btn">Tentar novamente</button>
-                <p class="error-detail">${error.message}</p>
-            </div>
-        `;
     }
 }
 
