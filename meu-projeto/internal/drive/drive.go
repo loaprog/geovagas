@@ -30,10 +30,9 @@ type GoogleCredentials struct {
 }
 
 func loadCredentials() ([]byte, error) {
-    // Tenta carregar do .env local (para desenvolvimento)
-    _ = godotenv.Load() // Ignora erro se não encontrar
-    
-    // Substitui quebras de linha se vierem como string literal
+    // No Render não precisa do godotenv.Load(), mas deixar não quebra.
+    _ = godotenv.Load()
+
     privateKey := strings.ReplaceAll(os.Getenv("GOOGLE_PRIVATE_KEY"), `\n`, "\n")
 
     creds := GoogleCredentials{
@@ -50,12 +49,17 @@ func loadCredentials() ([]byte, error) {
         UniverseDomain:          "googleapis.com",
     }
 
-	log.Println("Credenciais carregadas com sucesso")
-	log.Println("Private Key:", creds.PrivateKey)
-	log.Println("todos os dados:", creds)
+    // Checa se alguma env importante tá vazia
+    if creds.PrivateKey == "" || creds.ClientEmail == "" || creds.ClientID == "" {
+        log.Println("⚠️ Variáveis de ambiente faltando!")
+        log.Printf("PrivateKey vazia? %v", creds.PrivateKey == "")
+        log.Printf("ClientEmail: %s", creds.ClientEmail)
+        log.Printf("ClientID: %s", creds.ClientID)
+        return nil, fmt.Errorf("variáveis de ambiente obrigatórias não encontradas")
+    }
 
+    log.Println("✅ Credenciais carregadas (sem mostrar chave privada)")
 
-	// Converte a struct para JSON
     return json.Marshal(creds)
 }
 
