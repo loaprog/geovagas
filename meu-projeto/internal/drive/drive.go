@@ -1,22 +1,69 @@
+
 package drive
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"mime/multipart"
+	"os"
 	"strings"
 	"time"
 
+	"github.com/joho/godotenv"
 	"google.golang.org/api/drive/v3"
 	"google.golang.org/api/option"
 )
+
+type GoogleCredentials struct {
+	Type                    string `json:"type"`
+	ProjectID               string `json:"project_id"`
+	PrivateKeyID            string `json:"private_key_id"`
+	PrivateKey              string `json:"private_key"`
+	ClientEmail             string `json:"client_email"`
+	ClientID                string `json:"client_id"`
+	AuthURI                 string `json:"auth_uri"`
+	TokenURI                string `json:"token_uri"`
+	AuthProviderX509CertURL string `json:"auth_provider_x509_cert_url"`
+	ClientX509CertURL       string `json:"client_x509_cert_url"`
+	UniverseDomain          string `json:"universe_domain"`
+}
+
+func loadCredentials() ([]byte, error) {
+	err := godotenv.Load()
+	if err != nil {
+		return nil, fmt.Errorf("erro ao carregar .env: %v", err)
+	}
+
+	creds := GoogleCredentials{
+		Type:                    os.Getenv("GOOGLE_CREDENTIALS_TYPE"),
+		ProjectID:               os.Getenv("GOOGLE_PROJECT_ID"),
+		PrivateKeyID:            os.Getenv("GOOGLE_PRIVATE_KEY_ID"),
+		PrivateKey:              os.Getenv("GOOGLE_PRIVATE_KEY"),
+		ClientEmail:             os.Getenv("GOOGLE_CLIENT_EMAIL"),
+		ClientID:                os.Getenv("GOOGLE_CLIENT_ID"),
+		AuthURI:                 os.Getenv("GOOGLE_AUTH_URI"),
+		TokenURI:                os.Getenv("GOOGLE_TOKEN_URI"),
+		AuthProviderX509CertURL: os.Getenv("GOOGLE_AUTH_PROVIDER_CERT_URL"),
+		ClientX509CertURL:       os.Getenv("GOOGLE_CLIENT_CERT_URL"),
+		UniverseDomain:          "googleapis.com",
+	}
+
+	return json.Marshal(creds)
+}
 
 // UploadFile faz o upload de um arquivo para o Google Drive e retorna o link público.
 func UploadFile(nome string, file multipart.File, filename string) (string, error) {
 	ctx := context.Background()
 
-	// Autentica usando a conta de serviço
-	srv, err := drive.NewService(ctx, option.WithCredentialsFile("internal/drive/credentials.json"))
+	// Carrega as credenciais do .env
+	credsJSON, err := loadCredentials()
+	if err != nil {
+		return "", fmt.Errorf("erro ao carregar credenciais: %v", err)
+	}
+
+	// Autentica usando as credenciais
+	srv, err := drive.NewService(ctx, option.WithCredentialsJSON(credsJSON))
 	if err != nil {
 		return "", fmt.Errorf("erro ao criar serviço do Drive: %v", err)
 	}
@@ -26,6 +73,7 @@ func UploadFile(nome string, file multipart.File, filename string) (string, erro
 	if err != nil {
 		return "", err
 	}
+
 
 	// Cria ou obtém a subpasta do mês (ex: 04_25)
 	now := time.Now()
