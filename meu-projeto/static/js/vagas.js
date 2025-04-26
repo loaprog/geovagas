@@ -96,6 +96,11 @@ function renderJobsForCurrentPage() {
         document.getElementById('pagination-container').style.display = 'flex';
         renderPaginationControls();
     }
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // ou 'auto' se preferir sem animação
+    });
 }
 
 function resetFilters() {

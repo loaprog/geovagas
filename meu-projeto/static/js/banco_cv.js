@@ -1,6 +1,6 @@
 // Configuração do efeito de troca de palavras
 var options = {
-    strings: ["Tecnologia", "Inovação", "Topografia", "Desenvolvedor", "GIS", "Drones"],
+    strings: ["Tecnologia", "Inovação", "Topografia", "GIS", "Drones"],
     typeSpeed: 100,
     backSpeed: 100,
     backDelay: 1000,
