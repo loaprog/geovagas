@@ -183,7 +183,8 @@ function renderPaginationControls() {
 
 async function loadFeaturedJobs() {
     const container = document.getElementById('featured-jobs-container');
-    
+    let loadingTimeout;
+
     try {
         container.innerHTML = `
             <div class="loading-jobs">
@@ -191,23 +192,49 @@ async function loadFeaturedJobs() {
             </div>
         `;
 
+        // Adicionando timeout opcional caso queira adicionar delay fake
+        loadingTimeout = setTimeout(() => {}, 10000);
+
         const response = await fetch('/job-posts', {
             headers: {
                 'Accept': 'application/json'
             }
         });
 
-        if (!response.ok) throw new Error(`Erro no servidor: ${response.status}`);
+        if (!response.ok) {
+            console.error('Erro na resposta:', response.status, response.statusText);
+            throw new Error(`Erro no servidor: ${response.status}`);
+        }
 
-        allJobs = await response.json();
+        const jobs = await response.json();
+        allJobs = jobs || [];
         currentPage = 1;
-        renderJobsForCurrentPage();
 
-    }
-     catch (error) {
+        console.log('Vagas recebidas:', allJobs.length, 'vagas encontradas');
+        console.debug('Dados completos:', allJobs);
+
+        if (allJobs.length === 0) {
+            container.innerHTML = `
+                <div class="no-jobs">
+                    Nenhuma vaga em destaque no momento. Volte mais tarde!
+                </div>
+            `;
+        } else {
+            renderJobsForCurrentPage();
+            console.log('Vagas renderizadas com sucesso!');
+        }
+    } catch (error) {
         console.error('Erro ao carregar vagas:', error);
+        container.innerHTML = `
+            <div class="no-jobs error">
+                Ocorreu um erro ao carregar as vagas. Tente novamente mais tarde.
+            </div>
+        `;
+    } finally {
+        if (loadingTimeout) clearTimeout(loadingTimeout);
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('featured-jobs-container')) {
