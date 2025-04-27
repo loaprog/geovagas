@@ -4,12 +4,20 @@ import (
 	"context"  // Importando o pacote context
 	"log"
 	"github.com/jackc/pgx/v5/pgxpool"
-	// "os"
-	// "fmt"
+	"os"
+	"fmt"
+	"github.com/joho/godotenv"
 )
 
 func NewDB(ctx context.Context) (*pgxpool.Pool, error) {  
-    databaseUrl := "postgresql://neondb_owner:npg_TgAy3E1baFtK@ep-aged-glitter-ackvv1y3-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require"
+    // No Render não precisa do godotenv.Load(), mas deixar não quebra.
+    _ = godotenv.Load()
+
+	databaseUrl := os.Getenv("DATABASE_URL")
+	if databaseUrl == "" {
+		log.Fatal("A variável de ambiente DATABASE_URL não está definida.")
+		return nil, fmt.Errorf("DATABASE_URL não está definida")
+	}
 
 	// databaseUrl := os.Getenv("DATABASE_URL")
 	// if databaseUrl == "" {

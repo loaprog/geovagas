@@ -100,8 +100,6 @@ async function loadFeaturedJobs() {
         container.innerHTML = `
             <div class="error-loading">
                 ${errorMessage}
-                ${error.message ? `<p class="error-detail">${error.message}</p>` : ''}
-                <button onclick="loadFeaturedJobs()" class="retry-btn">Tentar novamente</button>
             </div>
         `;
 
