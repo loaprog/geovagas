@@ -1,0 +1,310 @@
+:root {
+    --primary-color: #42B14B;
+    --primary-dark: #3a9e43;
+    --primary-light: rgba(66, 177, 75, 0.1);
+    --text-color: #2d3748;
+    --text-light: #718096;
+    --border-color: #e2e8f0;
+    --bg-color: #f8fafc;
+    --white: #ffffff;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-image: 
+        radial-gradient(circle at 10% 20%, var(--primary-light) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, var(--primary-light) 0%, transparent 20%);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 380px; /* Reduzido de 420px */
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    padding: 25px; /* Reduzido de 30px */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), #4fd058);
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 25px; /* Reduzido de 30px */
+    width: 180px; /* Reduzido de 200px */
+    max-width: 100%;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.title {
+    color: var(--text-color);
+    font-size: 26px; /* Reduzido de 28px */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.title span {
+    color: var(--primary-color);
+    position: relative;
+}
+
+.title span::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 3px;
+    transform: scaleX(0.9);
+}
+
+.subtitle {
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 28px; /* Reduzido de 32px */
+    font-size: 14px; /* Reduzido de 15px */
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 20px; /* Reduzido de 24px */
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px; /* Reduzido de 8px */
+    color: var(--text-color);
+    font-size: 13px; /* Reduzido de 14px */
+    font-weight: 500;
+}
+
+.input-field {
+    width: 100%;
+    padding: 13px 18px; /* Reduzido de 15px 20px */
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 14px; /* Reduzido de 15px */
+    transition: var(--transition);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.input-field:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.input-field::placeholder {
+    color: #a0aec0;
+}
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.toggle-password:hover {
+    color: var(--primary-color);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px; /* Reduzido de 16px */
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 15px; /* Reduzido de 16px */
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 8px; /* Reduzido de 10px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.login-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px; /* Reduzido de 20px */
+    font-size: 13px; /* Reduzido de 14px */
+}
+
+.links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.links a:hover {
+    text-decoration: underline;
+    color: var(--primary-dark);
+}
+
+.features {
+    margin-top: 28px; /* Reduzido de 32px */
+    padding-top: 20px; /* Reduzido de 24px */
+    border-top: 1px solid var(--border-color);
+}
+
+.features-title {
+    color: var(--text-light);
+    font-size: 13px; /* Reduzido de 14px */
+    text-align: center;
+    margin-bottom: 14px; /* Reduzido de 16px */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.features-title::before,
+.features-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.features-title::before {
+    left: 25%;
+}
+
+.features-title::after {
+    right: 25%;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px; /* Reduzido de 16px */
+    color: var(--text-color);
+    font-size: 13px; /* Reduzido de 14px */
+    transition: var(--transition);
+    padding: 7px; /* Reduzido de 8px */
+    border-radius: 8px;
+}
+
+.feature-item:hover {
+    background-color: var(--primary-light);
+    transform: translateX(5px);
+}
+
+.feature-icon {
+    margin-right: 10px; /* Reduzido de 12px */
+    color: var(--primary-color);
+    font-size: 15px; /* Reduzido de 16px */
+    min-width: 18px; /* Reduzido de 20px */
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px 15px; /* Reduzido de 25px 20px */
+        border-radius: 12px;
+    }
+    
+    .logo {
+        width: 150px; /* Reduzido de 160px */
+        margin-bottom: 20px; /* Reduzido de 25px */
+    }
+    
+    .title {
+        font-size: 22px; /* Reduzido de 24px */
+    }
+    
+    .subtitle {
+        font-size: 13px; /* Reduzido de 14px */
+    }
+    
+    .features-title::before,
+    .features-title::after {
+        width: 20px;
+    }
+    
+    .features-title::before {
+        left: 15%;
+    }
+    
+    .features-title::after {
+        right: 15%;
+    }
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../wp-content/uploads/2024/04/overlay.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.2; /* Ajuste a opacidade conforme necessário */
+    z-index: -1;
+}
+
+

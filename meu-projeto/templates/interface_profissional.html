@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GeoVagas - Área do Candidato</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../static/wp-content/uploads/2024/04/icone.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../static/css/interface.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+    <!-- Menu Lateral -->
+    <aside class="sidebar">
+        <div class="user-profile">
+            <img src="https://ui-avatars.com/api/?name=João+Silva&background=4a90e2&color=fff" alt="Usuário" class="user-avatar">
+        
+            <h3 class="user-name">João Silva</h3>
+
+            <p class="premium-badge">
+                <i class="fas fa-crown"></i> AmbientalPro
+            </p>
+
+            <p class="user-email">joao.silva@email.com</p>
+            
+            <button class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sair</span>
+            </button>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="#" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Início</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-briefcase"></i>
+                <span>Portfólio</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Comunidade</span>
+            </a>
+        </nav>
+    </aside>
+    
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="header">
+            <h1 class="page-title">Bem-vindo, <span>João</span></h1>
+        </div>
+        
+        <div class="dashboard-cards">
+
+
+
+        </div>
+    </main>
+
+    <script>
+        // Logout
+        document.querySelector('.logout-btn').addEventListener('click', function() {
+            if(confirm('Deseja realmente sair?')) {
+                // Aqui você adicionaria a lógica de logout
+                window.location.href = 'login_profissional';
+            }
+        });
+        
+        // Ativar item do menu
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

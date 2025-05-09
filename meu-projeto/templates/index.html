@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>GeoVagas - Aceleradora de carreira</title>
-    <meta name="description" content="Soluções inovadoras que impactam o capital humano e os resultados direto de toda a cadeia.">
+    <!-- <meta name="description" content="Soluções inovadoras que impactam o capital humano e os resultados direto de toda a cadeia."> -->
     
     <!-- Favicon -->
     <link rel="icon" href="../static/wp-content/uploads/2024/04/icone.jpg" type="image/jpeg">
@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="../static/css/depoimentos.css">
     <link rel="stylesheet" href="../static/css/sobre.css">
     <link rel="stylesheet" href="../static/css/vagas.css">
-    <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/banco_cv.css">
     <link rel="stylesheet" href="../static/css/adicionar_vagas.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/parceiros.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 
@@ -53,7 +54,19 @@
             <li><a href='contato'>Contato</a></li>
             <!-- <li><a href='mundogis'>MundoGIS</a></li> -->
             <li><a href='vagas'>Vagas</a></li>
-        </ul>
+            <li>
+                <a href="login"
+                target="_blank"
+                style="background-color: #42B14B; color: white; padding: 6px 16px; border-radius: 40px;"
+                onmouseover="this.style.backgroundColor='#36943C'"
+                onmouseout="this.style.backgroundColor='#42B14B'">
+                Login
+             </a>
+         
+            </li>   
+
+            </ul>
+
     </header>
 
         <!-- Mobile Menu -->
@@ -70,12 +83,62 @@
                 <li><a href='sobre'>Sobre</a></li>
                 <li><a href='contato'>Contato</a></li>
                 <!-- <li><a href='mundogis'>MundoGIS</a></li> -->
-                <li><a href='vagas'>Vagas</a></li>
-                <!-- Mobile menu items -->
-            </ul>
+                <li><a href='vagas'>Vagas</a></li> 
+                <li>
+                    <a href="login"
+                    target="_blank"
+                    style="background-color: #42B14B; color: white; padding: 6px 16px; border-radius: 40px;"
+                    onmouseover="this.style.backgroundColor='#36943C'"
+                    onmouseout="this.style.backgroundColor='#42B14B'">
+                    Login
+                 </a>
+             
+                </li>         
+                </ul>
         </div>
 
-
+ 
+        <style>
+            @media (max-width: 768px) {
+                #primary-menu {
+                    display: none;
+                }
+                
+                .mobile-main-nav {
+                    text-align: center;
+                    padding: 0;
+                }
+                
+                .mobile-main-nav li {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                .mobile-main-nav li a {
+                    display: block;
+                    padding: 12px 0;
+                    text-decoration: none;
+                }
+                
+                .mobile-main-nav li a[href="login"] {
+                    background-color: #42B14B;
+                    color: white;
+                    padding: 12px 0;
+                    border-radius: 40px;
+                    font-size: 16px;
+                    margin: 15px auto;
+                    width: 80%;
+                    max-width: 200px;
+                }
+            }
+            
+            @media (min-width: 769px) {
+                .dt-mobile-header {
+                    display: none;
+                }
+            }
+        </style>
         
 <!-- Main Content -->
 <main id="main">
@@ -323,50 +386,32 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Depoimentos Section -->
-<section class="testimonials-section">
+<!-- Nossos Parceiros Section -->
+<section class="partners-section">
     <div class="container">
-        <h2>Depoimentos de quem conquistou <span>vagas conosco</span></h2>
-        
-        <div class="testimonials-container">
-            <!-- Estado inicial - quando não há depoimentos -->
-            <div class="empty-testimonial">
-                <div class="smiley-icon">📍</div>
-                <h3>Seja o primeiro a compartilhar sua experiência!</h3>
-                <p>Você conseguiu uma vaga através da GeoVagas? Conte como foi sua jornada e inspire outros profissionais.</p>
-                <a href="https://wa.me/5518997714640?text=O%20GeoVagas%20foi%20[O%20QUE%20ELE%20CONTRIBUIU]%2C%20consegui%20uma%20vaga%20como%20[SEU%20CARGO]%20na%20empresa%20[NOME%20DA%20EMPRESA].%20Muito%20obrigado%20pela%20ajuda!" target="_blank" class="btn-primary">ENVIAR MEU DEPOIMENTO</a>
-            
-            </div>
-            
-            <!-- Estrutura para futuros depoimentos (pode ser descomentada quando tiver depoimentos) -->
-            <!--
-            <div class="testimonial-card">
-                <div class="testimonial-content">
-                    <p>"Consegui minha primeira oportunidade na área de TI através da GeoVagas. O processo foi ágil e me senti preparado graças aos materiais disponibilizados!"</p>
+        <div class="section-header text-center">
+            <h2 class="section-title">Nossos <span class="highlight">Parceiros</span></h2>
+            <p class="section-subtitle">Empresas que acreditam no potencial dos profissionais de geociências</p>
+        </div>
+
+        <!-- Grid de parceiros com rolagem horizontal -->
+        <div class="partners-grid">
+            <a href="https://ambientalpro.com.br/" target="_blank" class="partner-card">
+                <div class="partner-logo">
+                    <img src="../static/parceiros/ambiental_dark.png" alt="AmbientalPro" loading="lazy">
                 </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">J</div>
-                    <div class="author-info">
-                        <h4>João Silva</h4>
-                        <span>Analista de Dados Jr. na Empresa X</span>
-                    </div>
+                <div class="partner-info">
+                    <p class="partner-description">Transformando o setor ambiental com tecnologia e inovação.</p>
                 </div>
-            </div>
-            -->
+            </a>
+          
+
+            <!-- Adicione outros cards seguindo esse mesmo modelo -->
+        </div>
+
+        <!-- Botão de ação -->
+        <div class="partner-cta text-center">
+            <a href="mailto:leonardo_deoliver@hotmail.com?subject=Quero%20ser%20parceiro%20GeoVagas" class="btn btn-primary">QUERO SER PARCEIRO</a>
         </div>
     </div>
 </section>
@@ -385,14 +430,6 @@
         <i class="fas fa-bullhorn" style="font-size: 16px; margin-right: 8px;"></i> DIVULGAR VAGA
     </button>
 </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -520,7 +557,7 @@
 <!-- Aviso sobre remoção de vagas -->
 <div class="remocao-vaga-notice" style="text-align: center; margin: 20px 0; font-size: 14px; color: #6c757d;">
     <p>É responsável por alguma vaga listada e deseja removê-la? <br>
-    Entre em contato pelo e-mail <a href="mailto:contato@geovagas.com.br" style="color: #42B14B; text-decoration: none;">leonardo_deoliver@hotmail.com</a></p>
+    Entre em contato pelo e-mail <a href="mailto:leonardo_deoliver@hotmail.com" style="color: #42B14B; text-decoration: none;">leonardo_deoliver@hotmail.com</a></p>
 </div>
 
     </div>

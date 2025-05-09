@@ -1,0 +1,142 @@
+
+
+.section-title {
+    font-size: 2.2rem; /* Tamanho igual ao da seção Vagas Destaque */
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: #333;
+    font-family: 'Poppins', sans-serif; /* Mantendo a mesma fonte */
+}
+
+.highlight {
+    color: #42B14B; /* Verde igual ao usado no menu */
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.partners-grid {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory;
+    margin: 2rem 0;
+}
+
+.partner-card {
+    flex: 0 0 auto;
+    width: 280px;
+    background: white;
+    border-radius: 12px;
+    padding: 1.8rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    scroll-snap-align: start;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #e9ecef;
+}
+
+.partner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.partner-logo {
+    width: 100%;
+    height: 100px; /* Altura fixa para manter o tamanho do logo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.partner-logo img {
+    width: 200px;
+    object-fit: contain;
+    filter: grayscale(0%); /* Remove o filtro cinza se existir */
+    transition: filter 0.3s ease;
+}
+
+.partner-card:hover .partner-logo img {
+    filter: grayscale(0%);
+}
+
+
+.partner-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+.partner-description {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 90%;
+    text-align: center;
+}
+
+.partner-cta {
+    margin-top: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.btn-primary {
+    background-color: #42B14B; /* Verde igual ao usado no menu */
+    color: white;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-primary:hover {
+    background-color: #3a9e42;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 177, 75, 0.2);
+}
+
+/* Customização da barra de rolagem */
+.partners-grid::-webkit-scrollbar {
+    height: 6px;
+}
+
+.partners-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.partners-grid::-webkit-scrollbar-thumb {
+    background: #42B14B;
+    border-radius: 10px;
+}
+
+.partners-grid::-webkit-scrollbar-thumb:hover {
+    background: #3a9e42;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .partner-card {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .partners-grid {
+        align-items: center;
+        gap: 1rem;
+    }
+}

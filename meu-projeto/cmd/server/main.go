@@ -25,7 +25,7 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	
 
-	// frontend
+	// frontend Inicial
 	http.HandleFunc("/", handlers.HomeHandler)
 	http.HandleFunc("/sobre", handlers.SobreHandler)
 	http.HandleFunc("/contato", handlers.ContatoHandler)
@@ -33,7 +33,17 @@ func main() {
 	http.HandleFunc("/vagas", handlers.VagasHandler)
 	http.HandleFunc("/details/", handlers.DetailsHandler)
 
-	// Endpoints
+	// Frontend Sistema
+	http.HandleFunc(("/login"), handlers.LoginHandler)
+	http.HandleFunc("/login_profissional", handlers.LoginProfissionalHandler)
+	http.HandleFunc("/login_empresa", handlers.LoginEmpresaHandler)
+	http.HandleFunc("/register", handlers.RegisterPageHandler)
+	http.HandleFunc("/interface_profissional", handlers.InterfaceProfissionalHandler)
+	http.HandleFunc("/redefinir_senha", handlers.RedefinirSenhaHandler)
+
+
+
+	// Endpoints Inicial
 	http.HandleFunc("/job-posts", handlers.JobPostsHandler(db))
 	http.HandleFunc("/job-posts/", handlers.JobPostByIDHandler(db))
 	http.Handle("/api/job-suggestions", handlers.JobSuggestionsHandler(db))
@@ -46,6 +56,11 @@ func main() {
 			http.Error(w, "Método não permitido", http.StatusMethodNotAllowed)
 		}
 	})
+
+	// Endpoints Sistema
+	http.HandleFunc("/register_user/", handlers.RegisterUserHandler(db))
+	http.HandleFunc("/recuperar_senha/", handlers.RecuperarSenhaHandler(db))
+	http.HandleFunc("/alterar_senha/", handlers.AlterarSenhaHandler(db))
 
 	log.Println("Servidor rodando na porta 10000")
 	if err := http.ListenAndServe(":10000", nil); err != nil {

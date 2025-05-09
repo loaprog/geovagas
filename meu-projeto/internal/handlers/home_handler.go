@@ -91,3 +91,86 @@ func MundoGisHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func LoginHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/login.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}
+
+func LoginProfissionalHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/login_profissional.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}
+
+func LoginEmpresaHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/login_empresa.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}
+
+func RegisterPageHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/register.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}
+
+func InterfaceProfissionalHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/interface_profissional.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}
+
+func RedefinirSenhaHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/redefinir_senha.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}

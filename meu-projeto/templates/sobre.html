@@ -45,8 +45,18 @@
             <li><a href='contato'>Contato</a></li>
             <!-- <li><a href='mundogis'>MundoGIS</a></li> -->
             <li><a href='vagas'>Vagas</a></li>
-        </ul>
-    </header>
+            <li>
+                <a href="login"
+                target="_blank"
+                style="background-color: #42B14B; color: white; padding: 6px 16px; border-radius: 40px;"
+                onmouseover="this.style.backgroundColor='#36943C'"
+                onmouseout="this.style.backgroundColor='#42B14B'">
+                Login
+             </a>
+         
+            </li>        
+            </ul>
+            </header>
 
         <!-- Mobile Menu -->
         <div class="dt-mobile-header">
@@ -64,8 +74,63 @@
                 <!-- <li><a href='mundogis'>MundoGIS</a></li> -->
                 <li><a href='vagas'>Vagas</a></li>
                 <!-- Mobile menu items -->
-            </ul>
+                <li>
+                    <a href="login"
+                    target="_blank"
+                    style="background-color: #42B14B; color: white; padding: 6px 16px; border-radius: 40px;"
+                    onmouseover="this.style.backgroundColor='#36943C'"
+                    onmouseout="this.style.backgroundColor='#42B14B'">
+                    Login
+                 </a>
+             
+                </li>        
+                </ul>   
         </div>
+
+
+        <style>
+            @media (max-width: 768px) {
+                #primary-menu {
+                    display: none;
+                }
+                
+                .mobile-main-nav {
+                    text-align: center;
+                    padding: 0;
+                }
+                
+                .mobile-main-nav li {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                .mobile-main-nav li a {
+                    display: block;
+                    padding: 12px 0;
+                    text-decoration: none;
+                }
+                
+                .mobile-main-nav li a[href="login"] {
+                    background-color: #42B14B;
+                    color: white;
+                    padding: 12px 0;
+                    border-radius: 40px;
+                    font-size: 16px;
+                    margin: 15px auto;
+                    width: 80%;
+                    max-width: 200px;
+                }
+            }
+            
+            @media (min-width: 769px) {
+                .dt-mobile-header {
+                    display: none;
+                }
+            }
+        </style>
+
+
 
     <!-- Main Content -->
 <!-- Main Content -->

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GeoVagas - Login Empresa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/login_profissional.css">
+    <link rel="stylesheet" href="../static/css/recuperar_senha.css">
+    <link rel="icon" href="../static/wp-content/uploads/2024/04/icone.jpg" type="image/jpeg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="login-container">
+        <img src="../static/wp-content/uploads/2024/04/mobile1.png" alt="GeoVagas" class="logo">
+        
+        <h1 class="title">Login <span>Empresa</span></h1>
+        <p class="subtitle">Acesse sua conta e encontre as melhores oportunidades no mercado de geotecnologia</p>
+        
+        <form>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" class="input-field" placeholder="seu@email.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <div class="password-container">
+                    <input type="password" id="password" class="input-field" placeholder="••••••••" required>
+                    <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                </div>
+            </div>
+            
+            <button type="submit" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                Entrar
+            </button>
+            
+            <div class="links">
+                <a href="#" class="forgot-password"> <!-- Adicionei a classe aqui -->
+                    <i class="fas fa-lock"></i>
+                    Esqueci minha senha
+                </a>
+                <a href="#" class="create-account">  <!-- Modifiquei esta linha -->
+                    <i class="fas fa-user-plus"></i>
+                    Criar conta
+                </a>
+            </div>
+        </form>
+        
+        <div class="features">
+            <div class="features-title">Benefícios</div>
+            <div class="feature-item">
+                <i class="fas fa-check-circle feature-icon"></i>
+                <span>Publique oportunidades na área de Geotecnologia</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-bell feature-icon"></i>
+                <span>Encontre e conecte-se com os melhores talentos do setor</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-user-edit feature-icon"></i>
+                <span>Gerencie e acompanhe suas vagas em um só lugar</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        
+        togglePassword.addEventListener('click', function() {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+
+
+<!-- Modal de Recuperação de Senha -->
+<div id="forgotPasswordModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Recuperar Senha</h2>
+        <p>Digite seu e-mail para receber o token de recuperação:</p>
+        <form id="recoveryForm">
+            <div class="form-group">
+                <input type="email" id="recoveryEmail" class="input-field" placeholder="seu@email.com" required>
+            </div>
+            <button type="submit" class="login-btn">
+                <i class="fas fa-paper-plane"></i>
+                Enviar Token
+            </button>
+        </form>
+    </div>
+</div>
+
+
+    <!-- Novo Modal para Criar Conta -->
+    <div id="createAccountModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Criar Conta de Empresa</h2>
+            <p>Para criar uma conta de empresa, entre em contato conosco:</p>
+            
+            <div class="contact-info">
+                <a href="tel:+5518997714640">
+                    <i class="fas fa-phone"></i>
+                    (18) 99771-4640
+                </a>
+                <a href="https://wa.me/5518997714640" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                <a href="mailto:leonardo_deoliver@hotmail.com">
+                    <i class="fas fa-envelope"></i>
+                    leonardo_deoliver@hotmail.com
+                </a>
+            </div>
+            
+            <p>Nossa equipe entrará em contato para finalizar seu cadastro.</p>
+        </div>
+    </div>
+
+    <script>
+                // Novo Modal para Criar Conta
+                document.querySelector('.create-account').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('createAccountModal').style.display = 'block';
+        });
+
+        // Fechar modais
+        const closeButtons = document.querySelectorAll('.close-modal');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.modal').style.display = 'none';
+            });
+        });
+
+        // Fechar ao clicar fora
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../static/js/recuperar_senha.js"></script>
+</body>
+</html>

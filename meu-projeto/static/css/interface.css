@@ -1,0 +1,242 @@
+:root {
+    --primary-color: #36943C;
+    --secondary-color: #42B14B;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --white: #ffffff;
+    --shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+}
+
+/* Menu Lateral */
+.sidebar {
+    width: 280px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+}
+
+.user-profile {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--primary-color);
+}
+
+.user-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    
+}
+
+.user-email {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 0 auto;
+}
+
+.logout-btn:hover {
+    color: var(--secondary-color);
+}
+
+.nav-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.nav-item i {
+    margin-right: 12px;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.nav-item.active, .nav-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.nav-item.active i, .nav-item:hover i {
+    color: white;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background-color: var(--light-gray);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
+
+.page-title span {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+}
+
+.card-content {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px;
+        padding: 20px 5px;
+    }
+    
+    .user-profile, .nav-item span {
+        display: none;
+    }
+    
+    .nav-item {
+        justify-content: center;
+        padding: 15px 5px;
+    }
+    
+    .nav-item i {
+        margin-right: 0;
+        font-size: 1.3rem;
+    }
+}
+
+/* Badge Premium */
+.premium-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #36943C, #7de283);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    margin-left: 8px;
+    vertical-align: middle;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    animation: pulse 2s infinite;
+}
+
+.premium-badge i {
+    margin-right: 5px;
+}
+
+/* Efeitos para usuários premium */
+.user-premium .user-avatar {
+    border-color: #FFD700;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #FFD700;
+}
+
+.user-premium .nav-item.active, 
+.user-premium .nav-item:hover {
+    background: linear-gradient(135deg, var(--primary-color), #2a6496);
+}
+
+/* Card exclusivo para premium */
+.premium-card {
+    position: relative;
+    border: 2px solid #FFD700;
+}
+
+.premium-card::before {
+    content: "EXCLUSIVO PREMIUM";
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background: #FFD700;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
