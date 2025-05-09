@@ -14,7 +14,7 @@ func EnviarEmail(destinatario, token string) error {
 	m.SetHeader("Subject", "GeoVagas - Recuperação de Senha")
 
 	// Substitua com o link da sua tela de recuperação:
-	link := "http://127.0.0.1:10000/redefinir_senha" 
+	link := "https://geovagas.onrender.com/redefinir_senha" 
 	_ = godotenv.Load()
 	login := os.Getenv("LOGIN_GMAIL")
 	senha := os.Getenv("SENHA_GMAIL")
