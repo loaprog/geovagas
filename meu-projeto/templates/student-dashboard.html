@@ -7,11 +7,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="../static/wp-content/uploads/2024/04/icone.jpg" type="image/jpeg">
     <link rel="stylesheet" href="../static/css/interface.css">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <button id="toggle-dark" class="dark-mode-toggle"><i class="fas fa-moon"></i></button>
+
+    <button id="menu-toggle" class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+
     <!-- Menu Lateral -->
     <aside class="sidebar">
+        <div class="logo-container">
+            <img src="../static/wp-content/uploads/2024/04/mobile1.png" alt="GeoVagas" class="logo">
+        </div>
         <div class="user-profile">
             <img id="user-avatar" src="https://ui-avatars.com/api/?name=Usuário&background=4a90e2&color=fff" alt="Usuário" class="user-avatar">
         
@@ -30,21 +43,88 @@
         </div>
         
         <nav class="nav-menu" id="nav-menu">
-            <!-- Itens do menu serão preenchidos dinamicamente -->
+            <a href="#" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Cursos</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>Meu Currículo</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-briefcase"></i>
+                <span>Vagas</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Comunidade</span>
+            </a>
         </nav>
+
+        <!-- Container da barra de progresso corrigido -->
+        <div class="portfolio-progress">
+            <span class="progress-percentage">87%</span>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 87%;"></div>
+                </div>
+                <p class="progress-label">Progresso do Currículo</p>
+            </div>
+        </div>
     </aside>
-    
+
     <!-- Conteúdo Principal -->
     <main class="main-content">
-        <div class="header">
-            <h1 class="page-title" id="page-title">Bem-vindo</h1>
-        </div>
+<div class="header">
+
+    <div class="header">
+
+        <h1 class="page-title" id="page-title">Bem-vindo</h1>
+    </div>
         
         <div class="dashboard-cards" id="dashboard-content">
-            <!-- Conteúdo específico será injetado aqui -->
+        <!-- Estatísticas principais -->
+
         </div>
     </main>
 
     <script src="../static/js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.getElementById("toggle-dark").addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+            
+            const logo = document.querySelector(".logo");
+            const mobileLogo = document.querySelector(".mobile-logo");
+            const isDarkMode = document.body.classList.contains("dark-mode");
+            
+            // Altere os caminhos conforme seus arquivos
+            logo.src = isDarkMode 
+                ? "../static/wp-content/uploads/2024/04/mobile2.png"
+                : "../static/wp-content/uploads/2024/04/mobile1.png";
+                
+            mobileLogo.src = isDarkMode 
+                ? "../static/wp-content/uploads/2024/04/mobile2.png"
+                : "../static/wp-content/uploads/2024/04/mobile1.png";
+        });
+        </script>
+    
+          <script>
+            document.getElementById('menu-toggle').addEventListener('click', function () {
+                document.querySelector('.sidebar').classList.toggle('active');
+            });
+        </script>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        
 </body>
 </html>

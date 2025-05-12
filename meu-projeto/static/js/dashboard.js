@@ -10,6 +10,23 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('user-email').textContent = userData.email;
     document.getElementById('page-title').innerHTML = `Bem-vindo, <span>${userData.name.split(' ')[0]}</span>`;
 
+    // Adicionar badges dos cursos se existirem
+    const userBadgeContainer = document.getElementById('user-badge');
+    if (userData.courses && userData.courses.length > 0) {
+        // Limpa o container primeiro
+        userBadgeContainer.innerHTML = '';
+        
+        // Adiciona cada curso como um badge
+        userData.courses.forEach(course => {
+            if (course.slug) {
+                const courseBadge = document.createElement('span');
+                courseBadge.className = 'course-badge';
+                courseBadge.textContent = course.slug;
+                userBadgeContainer.appendChild(courseBadge);
+            }
+        });
+    }
+
     const avatar = document.getElementById('user-avatar');
 
     function getInitials(name) {
@@ -34,22 +51,31 @@ document.addEventListener('DOMContentLoaded', function() {
     avatar.onload = function() {
         console.log('Imagem de perfil carregada com sucesso:', avatar.src);
     };
-
+    
     if (userData.photo_url) {
-        // Verifica se já é uma URL direta de imagem
-        if (userData.photo_url.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
-            console.log('URL de imagem direta:', userData.photo_url);
-            avatar.src = userData.photo_url;
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        
+        img.onload = function() {
+            avatar.src = this.src;
+            console.log('Imagem carregada com sucesso:', this.src);
+        };
+        
+        img.onerror = function() {
+            console.error('Falha ao carregar imagem, usando fallback');
+            setFallbackAvatar(userData.name);
+        };
+        
+        // Tenta primeiro com a URL direta
+        if (userData.photo_url.match(/\.(jpeg|jpg|gif|png|webp)(\?.*)?$/i)) {
+            img.src = userData.photo_url;
         } else {
-            // Formata URL do Google Drive
+            // Usa a URL formatada do Google Drive
             const formattedUrl = formatGoogleDriveUrl(userData.photo_url);
-            console.log('URL da imagem de perfil (formatada):', formattedUrl);
-            
-            // Adiciona timestamp para evitar cache
-            avatar.src = formattedUrl + '&t=' + new Date().getTime();
+            console.log('Tentando carregar:', formattedUrl);
+            img.src = formattedUrl;
         }
     } else {
-        console.warn('Nenhuma photo_url fornecida. Usando avatar padrão.');
         setFallbackAvatar(userData.name);
     }
 
@@ -58,23 +84,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Função melhorada para formatar URLs do Google Drive
 function formatGoogleDriveUrl(url) {
-    // Se já for uma URL direta de visualização, retorna como está
-    if (url.includes('uc?export=view')) return url;
-    
-    // Extrai o ID do arquivo de diferentes formatos de URL do Google Drive
-    let fileId;
-    const match1 = url.match(/\/d\/([^\/]+)/);
-    const match2 = url.match(/id=([^&]+)/);
-    const match3 = url.match(/\/file\/d\/([^\/]+)/);
-    
-    if (match1 && match1[1]) fileId = match1[1];
-    else if (match2 && match2[1]) fileId = match2[1];
-    else if (match3 && match3[1]) fileId = match3[1];
-    
+    const fileId = url.match(/[-\w]{25,}/); // Extrai o ID do arquivo
     if (fileId) {
-        return `https://drive.google.com/uc?export=view&id=${fileId}`;
+        // Use o proxy do Google Drive ou seu próprio backend
+        return `https://lh3.googleusercontent.com/d/${fileId[0]}=s500?authuser=0`;
+        // Ou crie um endpoint no seu backend:
+        // return `/api/drive-proxy?id=${fileId[0]}`;
     }
-    
-    // Se não conseguir extrair o ID, retorna a URL original
     return url;
 }
+
+document.querySelector('.logout-btn').addEventListener('click', function() {
+    localStorage.removeItem('userData');
+    window.location.href = '/login_profissional';
+});

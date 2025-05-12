@@ -37,6 +37,7 @@ body {
     padding: 20px;
     border-bottom: 1px solid #eee;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .user-avatar {
@@ -50,15 +51,57 @@ body {
 
 .user-name {
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: var(--text-color);
-    
+    line-height: 1.3;
+    word-break: break-word;
 }
 
 .user-email {
     font-size: 0.8rem;
     color: #777;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+/* Container dos badges de cursos */
+.user-badge {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin: 12px 0;
+    max-width: 100%;
+}
+
+/* Estilo dos badges de cursos */
+.course-badge {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: lowercase;
+    white-space: nowrap;
+    box-shadow: var(--shadow);
+    transition: all 0.2s ease;
+    margin-bottom: 5px;
+}
+
+.course-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Variantes de badges */
+.course-badge.premium {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #333;
+}
+
+.course-badge.basic {
+    background-color: #36943C;
 }
 
 .logout-btn {
@@ -118,13 +161,7 @@ body {
     background-color: var(--light-gray);
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
+ 
 .page-title {
     font-size: 1.8rem;
     color: var(--text-color);
@@ -185,24 +222,10 @@ body {
         margin-right: 0;
         font-size: 1.3rem;
     }
-}
 
-/* Badge Premium */
-.premium-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #36943C, #7de283);
-    color: #fff;
-    padding: 3px 10px;
-    border-radius: 15px;
-    font-size: 0.7rem;
-    margin-left: 8px;
-    vertical-align: middle;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    animation: pulse 2s infinite;
-}
-
-.premium-badge i {
-    margin-right: 5px;
+    .user-badge {
+        display: none;
+    }
 }
 
 /* Efeitos para usuários premium */
@@ -239,4 +262,229 @@ body {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
+}
+
+
+.logo-container {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.logo-container .logo {
+    max-width: 120px;
+    height: auto;
+}
+
+
+
+
+/* Barra de progresso */
+.portfolio-progress {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 80%;
+    height: 14px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px 0 0 10px;
+    transition: width 0.5s ease-in-out;
+    animation: progress-pulse 2s infinite ease-in-out;
+}
+
+
+
+/* Mobile */
+/* Botão de menu só visível no mobile */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 999;
+    font-size: 1.2rem;
+}
+
+
+
+/* Responsividade do menu lateral */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -1000px; /* Alterado de -100% para -240px para corresponder à largura */
+        width: 100%;
+        height: 100%;
+        transition: left 0.5s ease;
+        overflow-y: auto;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .nav-menu {
+        display: none; /* Esconde apenas o menu de navegação */
+    }
+
+    /* Exibir texto nos itens do menu no mobile */
+    .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        color: #000000;
+        text-decoration: none;
+    }
+
+    .nav-item i {
+        margin-right: 10px; /* Espaçamento entre ícone e texto */
+    }
+
+    .nav-item span {
+        display: inline-block;
+    }
+
+
+    .sidebar.active .nav-menu {
+        display: block; /* Mostra o menu quando sidebar está ativo */
+    }
+
+
+    /* Exibe o botão de modo escuro quando a sidebar está ativa */
+    .sidebar.active .toggle-dark {
+        display: block;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-content {
+        margin-top: 55px; /* Altura do cabeçalho + margem */
+        text-align: center;
+
+
+    }
+
+    .dark-mode-toggle {
+        top: 20px;
+        right: 20px;
+        position: fixed;
+        z-index: 999;
+    }
+}
+
+    .user-profile {
+        display: block;
+    }
+
+/* Logo para mobile */
+
+.mobile-logo {
+    max-width: 150px;
+    height: auto;
+}
+
+/* Mostrar logo no mobile */
+@media (max-width: 768px) {
+    .mobile-logo-container {
+        display: block;
+    }
+    
+    /* Ajuste no título para acomodar o logo */
+    .page-title {
+        margin-top: 10px;
+    }
+    
+    /* Ajuste no header */
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
+
+
+/* Dark mode */
+body.dark-mode .user-name {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: rgb(255, 255, 255);
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+body.dark-mode .page-title {
+    color: #fff;
+}
+
+body.dark-mode .span {
+    color: #fff;
+}
+
+body.dark-mode .main-content {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .user-email {
+    font-size: 0.8rem;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .sidebar {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .nav-item {
+    color: #ffffff;
+}
+
+body.dark-mode .nav-item.active {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .progress-bar {
+    background-color: #ffffff;
+}
+
+
+.dark-mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: inherit;
 }

@@ -157,26 +157,26 @@ func RegisterUserHandler(db *pgxpool.Pool) http.HandlerFunc {
 
 // getPremiumCoursesForEmail busca na tabela partner_courses os cursos premium associados ao email
 func getPremiumCoursesForEmail(tx pgx.Tx, email string) ([]models.PartnerCourse, error) {
-	rows, err := tx.Query(context.Background(),
-		`SELECT id, name, slug FROM techvagas.partner_courses
-		 WHERE $1 = ANY(emails)`,
-		email,
-	)
-	if err != nil {
-		return nil, fmt.Errorf("erro ao buscar cursos premium: %v", err)
-	}
-	defer rows.Close()
+    rows, err := tx.Query(context.Background(),
+        `SELECT id, name, COALESCE(slug, '') FROM techvagas.partner_courses
+         WHERE $1 = ANY(emails)`,
+        email,
+    )
+    if err != nil {
+        return nil, fmt.Errorf("erro ao buscar cursos premium: %v", err)
+    }
+    defer rows.Close()
 
-	var courses []models.PartnerCourse
-	for rows.Next() {
-		var course models.PartnerCourse
-		if err := rows.Scan(&course.ID, &course.Name, &course.Slug); err != nil {
-			return nil, fmt.Errorf("erro ao ler curso premium: %v", err)
-		}
-		courses = append(courses, course)
-	}
+    var courses []models.PartnerCourse
+    for rows.Next() {
+        var course models.PartnerCourse
+        if err := rows.Scan(&course.ID, &course.Name, &course.Slug); err != nil {
+            return nil, fmt.Errorf("erro ao ler curso premium: %v", err)
+        }
+        courses = append(courses, course)
+    }
 
-	return courses, nil
+    return courses, nil
 }
 
 // Função gerar token aleatorio

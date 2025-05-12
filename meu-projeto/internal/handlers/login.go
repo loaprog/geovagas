@@ -79,6 +79,44 @@ func LoginApiHandler(db *pgxpool.Pool) http.HandlerFunc {
             return
         }
 
+        // Buscar os cursos do estudante
+        var courses []map[string]interface{}
+        if userType == "student" {
+            coursesQuery := `
+                SELECT pc.id, pc.name, pc.slug
+                FROM techvagas.student_courses sc
+                JOIN techvagas.partner_courses pc ON sc.course_id = pc.id
+                WHERE sc.student_id = $1
+            `
+            
+            rows, err := db.Query(context.Background(), coursesQuery, userID)
+            if err != nil {
+                log.Printf("Erro ao buscar cursos do estudante: %v", err)
+                // Não retornamos erro, apenas logamos, pois o login é válido
+            } else {
+                defer rows.Close()
+                
+                for rows.Next() {
+                    var id int
+                    var name, slug string
+                    if err := rows.Scan(&id, &name, &slug); err != nil {
+                        log.Printf("Erro ao scanear curso: %v", err)
+                        continue
+                    }
+                    
+                    courses = append(courses, map[string]interface{}{
+                        "id":   id,
+                        "name": name,
+                        "slug": slug,
+                    })
+                }
+                
+                if err = rows.Err(); err != nil {
+                    log.Printf("Erro após iterar cursos: %v", err)
+                }
+            }
+        }
+
         // Criar token JWT
         expirationTime := time.Now().Add(24 * time.Hour)
         claims := &Claims{
@@ -104,10 +142,11 @@ func LoginApiHandler(db *pgxpool.Pool) http.HandlerFunc {
             "message": "Login realizado com sucesso",
             "token":   tokenString,
             "user": map[string]interface{}{
-                "id":    userID,
-                "name":  name,
-                "email": creds.Email,
-                "type":  userType,
+                "id":      userID,
+                "name":    name,
+                "email":   creds.Email,
+                "type":    userType,
+                "courses": courses, // Adiciona os cursos aqui
             },
         }
 
