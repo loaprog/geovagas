@@ -174,3 +174,17 @@ func RedefinirSenhaHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
 	}
 }
+
+func StudentDashdboardHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/student-dashboard.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}

@@ -40,6 +40,7 @@ func main() {
 	http.HandleFunc("/register", handlers.RegisterPageHandler)
 	http.HandleFunc("/interface_profissional", handlers.InterfaceProfissionalHandler)
 	http.HandleFunc("/redefinir_senha", handlers.RedefinirSenhaHandler)
+	http.HandleFunc("/student_dashboard", handlers.StudentDashdboardHandler)
 
 
 
@@ -61,6 +62,7 @@ func main() {
 	http.HandleFunc("/register_user/", handlers.RegisterUserHandler(db))
 	http.HandleFunc("/recuperar_senha/", handlers.RecuperarSenhaHandler(db))
 	http.HandleFunc("/alterar_senha/", handlers.AlterarSenhaHandler(db))
+	http.HandleFunc("/login_api/", handlers.LoginApiHandler(db))
 
 	log.Println("Servidor rodando na porta 10000")
 	if err := http.ListenAndServe(":10000", nil); err != nil {
