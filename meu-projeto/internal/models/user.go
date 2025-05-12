@@ -2,6 +2,7 @@ package models
 
 import (
 	"time"
+	"github.com/jackc/pgx/v5/pgtype"
 )
 
 type User struct {
@@ -15,22 +16,22 @@ type User struct {
 }
 
 type Student struct {
-	UserID        int       `json:"user_id"`
-	Phone         string    `json:"telefone"`
-	City          string    `json:"cidade"`
-	State         string    `json:"estado"`
-	ResumePath    string    `json:"curriculo"`
-	DesiredJob    string    `json:"cargo_desejado"`
-	QGIS          string    `json:"qgis"`
-	ArcGIS        string    `json:"arcgis"`
-	AutoCAD       string    `json:"autocad"`
-	Python        string    `json:"python"`
-	English       string    `json:"ingles"`
-	Oratory       string    `json:"oratoria"`
-	Interview     string    `json:"entrevista"`
-	Bio           string    `json:"bio"`
-	CreatedAt     time.Time `json:"created_at"`
-	PhotoPath     string    `json:"foto_path"`
+    UserID        int           `json:"user_id"`
+    Phone         pgtype.Text   `json:"telefone"`
+    City          pgtype.Text   `json:"cidade"`
+    State         pgtype.Text   `json:"estado"`
+    ResumePath    pgtype.Text   `json:"curriculo"`
+    DesiredJob    pgtype.Text   `json:"cargo_desejado"`
+    QGIS          pgtype.Text   `json:"qgis"`
+    ArcGIS        pgtype.Text   `json:"arcgis"`
+    AutoCAD       pgtype.Text   `json:"autocad"`
+    Python        pgtype.Text   `json:"python"`
+    English       pgtype.Text   `json:"ingles"`
+    Oratory       pgtype.Text   `json:"oratoria"`
+    Interview     pgtype.Text   `json:"entrevista"`
+    Bio           pgtype.Text   `json:"bio"`
+    CreatedAt     time.Time     `json:"created_at"`
+    PhotoPath     pgtype.Text   `json:"foto_path"`
 }
 
 type StudentCourse struct {
