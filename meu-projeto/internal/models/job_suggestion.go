@@ -15,4 +15,5 @@ type JobSuggestion struct {
 	FullDescription  string    `json:"full_description"`
 	LocationStay     string    `json:"location_stay"`
 	Whatsapp         string    `json:"whatsapp"`
+	Exclusivo        bool      `json:"is_exclusive"`
 }

@@ -1,0 +1,712 @@
+.stats-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    margin-inline: auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+
+.stat-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+    min-height: 150px;
+    flex-shrink: 0; /* Impede que o item encolha */
+    width: 200px;   /* Largura fixa para forçar o overflow */
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    font-size: 1.0rem;
+    color: white;
+}
+
+.stat-icon.applications {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.stat-icon.views {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.stat-icon.available {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.stat-icon.ranking {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    color: var(--text-color);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+}
+
+
+
+/* TOP USERS */
+/* TOP USERS - COMPACT STYLE */
+.top-users-container {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+.section-title {
+    font-size: 1rem;
+    margin: 0 0 12px 0;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.section-title i {
+    color: #FFD700;
+    font-size: 0.9rem;
+}
+
+.users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.user-item {
+    display: grid;
+    grid-template-columns: 20px 32px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.user-item:last-child {
+    border-bottom: none;
+}
+
+.user-rank {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.user-rank.gold { color: #FFD700; }
+.user-rank.silver { color: #C0C0C0; }
+.user-rank.bronze { color: #CD7F32; }
+
+.user-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-name {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-points {
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+    font-weight: 500;
+}
+
+/* Dark Mode Adjustments */
+.dark-mode .top-users-container {
+    background: var(--dark-card-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .user-item {
+    border-bottom-color: #2d3748;
+}
+
+.dark-mode .user-name {
+    color: #e2e8f0;
+}
+
+.dark-mode .user-points {
+    color: #a0aec0;
+}
+
+
+.dark-mode .stat-card {
+    background-color: #333;
+}
+    
+.dark-mode .extra-card {
+    background-color: #333;
+}
+
+.dark-mode .dashboard-footer {
+    background-color: #333;
+}
+
+.dark-mode .performance-container {
+    background-color: #333;
+}
+
+.dark-mode .vaga-card {
+    background-color: #121212;
+}
+
+.dark-mode .stat-value {
+    color: #fff;
+}
+
+.dark-mode .section-title {
+    color: #fff;
+}
+
+.dark-mode .parceiro-empresa {
+    color: #E0E0E0;
+    
+}
+
+.dark-mode .parceiro-card {
+    background-color: #121212;
+}
+
+.dark-mode .parceiro-titulo {
+    color: #ffffff;
+}
+
+.dark-mode .vaga-titulo {
+    color: #ffffff;
+}
+
+.dark-mode .vaga-empresa {
+    color: #E0E0E0;
+}
+
+.dark-mode .vaga-tag {
+    color: #3BB951;
+    background-color: #333;
+}
+
+.dark-mode .vaga-tempo {
+    color: #ffffff
+}
+
+
+.dashboard-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center
+}
+
+.page-subtitle {
+    margin-bottom: 20px;
+}
+
+
+ 
+.performance-chart {
+    position: relative;
+    height: 250px;
+     width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos para os novos containers */
+.stats-top-container {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr; /* 3 colunas */
+gap: 20px;
+height: 100%; /* altura total */
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.main-content {
+overflow: visible;
+/* Se houver alguma altura fixa, remova: */
+height: auto;
+min-height: 100vh;
+}
+    /* Estilos para o footer */
+ .dashboard-footer {
+grid-column: 1 / -1;
+background-color: #ffffff;
+border-radius: 10px;
+padding: 20px;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+width: 100%;
+max-height: none; /* Remove a altura máxima */
+overflow: visible; /* Remove qualquer scroll */
+}
+
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: visible;
+}
+
+.footer-parceiros {
+    width: 100%;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+overflow-y: auto; /* Permite scroll apenas no body, não em elementos internos */
+}
+
+.stats-container {
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.performance-container {
+    
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    height: 230px;
+}
+
+.top-users-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}
+
+.extras-container {
+    display: grid;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.extra-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;  /* ativa o scroll vertical se ultrapassar o limite */
+}
+
+
+.custom-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.custom-list li {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    position: relative;
+}
+
+.custom-list li::before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #3BB951;
+}
+
+@media (max-width: 1200px) {
+    .stats-top-container {
+        flex-direction: column;
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Adicione isso ao seu bloco de estilo existente */
+
+/* Estilo para os cards de vagas exclusivas - Versão Compacta */
+.vagas-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
+margin-top: 10px;
+max-height: 300px;
+overflow-y: auto;
+padding: 10px;
+}
+
+.vaga-card {
+background-color: #ffffff;
+border-radius: 8px;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+padding: 12px;
+transition: all 0.2s ease;
+border-left: 3px solid #3BB951;
+font-family: 'Poppins', sans-serif;
+font-size: 13px;
+color: #34495e;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+height: 180px;
+width: 250px;
+}
+
+.vaga-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.vaga-titulo {
+font-size: 15px;
+font-weight: 600;
+color: #2c3e50;
+margin-bottom: 4px;
+line-height: 1.3;
+}
+
+.vaga-empresa {
+font-size: 13px;
+color: #36943C;
+margin-bottom: 3px;
+}
+
+.vaga-local {
+font-size: 12px;
+color: #7f8c8d;
+margin-bottom: 8px;
+}
+
+.vaga-descricao {
+font-size: 12px;
+color: #34495e;
+margin-bottom: 10px;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+overflow: hidden;
+line-height: 1.4;
+flex-grow: 1;
+}
+
+.vaga-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+margin-bottom: 10px;
+}
+
+.vaga-tag {
+background-color: #f1f8fe;
+color: #3BB951;
+padding: 3px 8px;
+border-radius: 12px;
+font-size: 11px;
+}
+
+.vaga-footer {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 10px;
+font-size: 11px;
+}
+
+.vaga-tempo {
+color: #95a5a6;
+}
+
+.vaga-link {
+color: #3BB951;
+text-decoration: none;
+font-weight: 500;
+font-size: 12px;
+}
+
+.vaga-link:hover {
+text-decoration: underline;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+.vagas-container {
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.vaga-card {
+padding: 10px;
+}
+
+.vaga-titulo {
+font-size: 14px;
+}
+}
+
+/* Estilo para os cards de parceiros/cursos */
+.parceiros-container {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 20px;
+max-height: 220px;
+overflow: visible;
+}
+.main-content{
+overflow: visible; /* Remove qualquer scroll */
+}
+
+.parceiro-card {
+background-color: #ffffff;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+overflow: hidden;
+transition: transform 0.3s ease;
+max-height: 220px;
+}
+
+.portfolio-progress {
+    margin-bottom: 5px;
+}
+
+.parceiro-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.parceiro-imagem {
+width: 100%;
+height: 150px;
+object-fit: cover;
+}
+
+.parceiro-conteudo {
+padding: 15px;
+}
+
+.parceiro-titulo {
+font-size: 14px;
+font-weight: 600;
+color: #2c3e50;
+margin-bottom: 5px;
+height: 40px;
+}
+
+.parceiro-empresa {
+font-size: 14px;
+color: #3BB951;
+margin-bottom: 5px;
+}
+
+
+
+.parceiro-link:hover {
+text-decoration: underline;
+}
+
+
+
+
+
+
+/* ==================== MEDIA QUERIES PARA MOBILE ==================== */
+@media (max-width: 768px) {
+    /* Layout principal */
+    .stats-top-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+    
+    /* Container de estatísticas */
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 0;
+    }
+    
+    .stat-card {
+        width: 100%;
+        max-width: 300px;
+        min-height: 120px;
+        padding: 15px;
+    }
+    
+    /* Performance chart */
+    .performance-container {
+        height: auto;
+        padding: 15px;
+    }
+    
+    .performance-chart {
+        height: 200px;
+    }
+    
+    /* Cards extras */
+    .extra-card {
+        max-height: none;
+        padding: 15px;
+    }
+    
+    /* Top Users */
+    .users-list {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    
+    .user-item {
+        padding: 8px 0;
+    }
+    
+    /* Vagas */
+    .vagas-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .vaga-card {
+        padding: 12px;
+    }
+    
+    /* Parceiros */
+    .parceiros-container {
+        grid-template-columns: 1fr;
+        max-height: none;
+    }
+    
+    .parceiro-card {
+        max-height: none;
+    }
+    
+    .parceiro-imagem {
+        height: 120px;
+    }
+    
+    /* Footer */
+    .dashboard-footer {
+        padding: 15px;
+    }
+    
+    /* Ajustes de texto */
+    .page-title {
+        font-size: 1.5rem;
+    }
+    
+    .page-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+    .stat-card {
+        min-height: 100px;
+    }
+    
+    .stat-value {
+        font-size: 1.3rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .performance-chart {
+        height: 180px;
+    }
+    
+    .vaga-titulo {
+        font-size: 14px;
+    }
+    
+    .parceiro-titulo {
+        font-size: 13px;
+        height: auto;
+    }
+}

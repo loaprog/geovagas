@@ -64,6 +64,7 @@ func main() {
 	http.HandleFunc("/alterar_senha/", handlers.AlterarSenhaHandler(db))
 	http.HandleFunc("/login_api/", handlers.LoginApiHandler(db))
 	http.HandleFunc("/api/progress_cv_by_id/", handlers.ProgressCVByIDHandler(db))
+	http.HandleFunc("/job_exclusive", handlers.JobExclusiveHandler(db))
 
 	log.Println("Servidor rodando na porta 10000")
 	if err := http.ListenAndServe(":10000", nil); err != nil {

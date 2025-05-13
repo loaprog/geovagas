@@ -8,18 +8,17 @@
     <link rel="icon" href="../static/wp-content/uploads/2024/04/icone.jpg" type="image/jpeg">
     <link rel="stylesheet" href="../static/css/interface.css">
     <link rel="stylesheet" href="../static/css/dashboard.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+
 </head>
 <body>
 
     <button id="toggle-dark" class="dark-mode-toggle"><i class="fas fa-moon"></i></button>
-
     <button id="menu-toggle" class="menu-toggle">
         <i class="fas fa-bars"></i>
     </button>
     
-
     <!-- Menu Lateral -->
     <aside class="sidebar">
         <div class="logo-container">
@@ -27,15 +26,11 @@
         </div>
         <div class="user-profile">
             <img id="user-avatar" src="https://ui-avatars.com/api/?name=Usuário&background=4a90e2&color=fff" alt="Usuário" class="user-avatar">
-        
             <h3 id="user-name" class="user-name">Usuário</h3>
-
             <div id="user-badge" class="premium-badge">
                 <!-- Dinâmico conforme tipo de usuário -->
             </div>
-
             <p id="user-email" class="user-email">email@exemplo.com</p>
-            
             <button class="logout-btn">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Sair</span>
@@ -69,7 +64,7 @@
             </a>
         </nav>
 
-        <!-- Container da barra de progresso corrigido -->
+        <!-- Container da barra de progresso -->
         <div class="portfolio-progress">
             <span class="progress-percentage">0%</span>
             <div class="progress-container">
@@ -83,50 +78,200 @@
 
     <!-- Conteúdo Principal -->
     <main class="main-content">
-<div class="header">
-
-    <div class="header">
-
-        <h1 class="page-title" id="page-title">Bem-vindo</h1>
-    </div>
-        
-        <div class="dashboard-cards" id="dashboard-content">
-        <!-- Estatísticas principais -->
-
+        <div class="header">
+            <h1 class="page-title" id="page-title">Bem-vindo, <span id="user-first-name">Usuário</span></h1>
+            <p class="page-subtitle" id="page-subtitle">Acompanhe suas oportunidades e desempenho</p>
         </div>
-    </main>
-
-    <script src="../static/js/dashboard.js"></script>
-    <script src="../static/js/progress_cv.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-        document.getElementById("toggle-dark").addEventListener("click", function () {
-            document.body.classList.toggle("dark-mode");
-            
-            const logo = document.querySelector(".logo");
-            const mobileLogo = document.querySelector(".mobile-logo");
-            const isDarkMode = document.body.classList.contains("dark-mode");
-            
-            // Altere os caminhos conforme seus arquivos
-            logo.src = isDarkMode 
-                ? "../static/wp-content/uploads/2024/04/mobile2.png"
-                : "../static/wp-content/uploads/2024/04/mobile1.png";
+        
+        <div class="dashboard-content">
+            <div class="stats-top-container">
+                <!-- Coluna da esquerda -->
+                <div class="left-column">
+                    <!-- Estatísticas principais -->
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-icon applications">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Candidaturas</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon views">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="stat-value">24</div>
+                            <div class="stat-label">Visualizações</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon available">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="stat-value">45</div>
+                            <div class="stat-label">Vagas disponíveis</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon ranking">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-value">#8</div>
+                            <div class="stat-label">No ranking</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Gráfico de visualizações -->
+                    <div class="performance-container">
+                        <h3 class="section-title">Visualizações de perfil</h3>
+                        <div class="performance-chart">
+                            <canvas id="profileViewsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
                 
-            mobileLogo.src = isDarkMode 
-                ? "../static/wp-content/uploads/2024/04/mobile2.png"
-                : "../static/wp-content/uploads/2024/04/mobile1.png";
-        });
-        </script>
+                <!-- Coluna da direita -->
+                <div class="extra-card">
+                        <h3 class="section-title">Top Usuários</h3>
+                        <div class="users-list">
+                            <div class="user-item">
+                                <span class="user-rank gold">1</span>
+                                <img src="https://ui-avatars.com/api/?name=João+Silva&background=4a90e2&color=fff&size=32" alt="João Silva" class="user-icon">
+                                <span class="user-name">João Silva</span>
+                                <span class="user-points">85</span>
+                            </div>
+                            
+                            <div class="user-item">
+                                <span class="user-rank silver">2</span>
+                                <img src="https://ui-avatars.com/api/?name=Maria+Souza&background=4a90e2&color=fff&size=32" alt="João Silva" class="user-icon">
+                                <span class="user-name">João Silva</span>
+                                <span class="user-points">72</span>
+                            </div>
+                            
+                            <div class="user-item">
+                                <span class="user-rank bronze">3</span>
+                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
+                                <span class="user-name">Carlos Oliveira</span>
+                                <span class="user-points">68</span>
+                            </div>
+
+                            <div class="user-item">
+                                <span class="user-rank">4</span>
+                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
+                                <span class="user-name">Carlos Oliveira</span>
+                                <span class="user-points">68</span>
+                            </div>
+
+                            <div class="user-item">
+                                <span class="user-rank">5</span>
+                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
+                                <span class="user-name">Carlos Oliveira</span>
+                                <span class="user-points">68</span>
+                            </div>
+
+                            <div class="user-item">
+                                <span class="user-rank">6</span>
+                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
+                                <span class="user-name">Carlos Oliveira</span>
+                                <span class="user-points">68</span>
+                            </div>
+
+                            <div class="user-item">
+                                <span class="user-rank">7</span>
+                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
+                                <span class="user-name">Carlos Oliveira</span>
+                                <span class="user-points">68</span>
+                            </div>
+
+                            <div class="user-item">
+                                <span class="user-rank">8</span>
+                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
+                                <span class="user-name">Carlos Oliveira</span>
+                                <span class="user-points">68</span>
+                            </div>
+
+                            <div class="user-item">
+                                <span class="user-rank">9</span>
+                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
+                                <span class="user-name">Carlos Oliveira</span>
+                                <span class="user-points">68</span>
+                                </div>
+
+                            <div class="user-item">
+                                <span class="user-rank">10</span>
+                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
+                                <span class="user-name">Carlos Oliveira</span>
+                                <span class="user-points">68</span>
+                            </div>
+                        
+                    </div>
+                </div>
+                    
+<!-- Vagas Exclusivas -->
+<div class="extra-card" id="job-list">
+    <h3 class="section-title">Vagas Exclusivas</h3>
+    <div class="vagas-container" id="vagas-container">
+        <div class="vaga-card">
+            <h3 class="vaga-titulo">Cargo</h3>
+            <p class="vaga-empresa">Empresa</p>
+            <p class="vaga-local">Cidade / Estado</p>
+            <div class="vaga-tags">
+                <span class="vaga-tag">GIS</span>
+                <span class="vaga-tag">Python</span>
+                <span class="vaga-tag">QGIS</span>
+            </div>
+            <div class="vaga-footer">
+                <span class="vaga-tempo">postada há 1 semana</span>
+                <a href="#" class="vaga-link">Ver Detalhes</a>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+</div>
+
+<!-- Parceiros -->
+<div class="dashboard-footer">
+    <div class="footer-parceiros">
+        <h3 class="section-title">Cursos Parceiros</h3>
+        <div class="parceiros-container">
+            <div class="parceiro-card">
+                <img src="../static/wp-content/uploads/2024/cursos/geodev.jpg" alt="Curso Python" class="parceiro-imagem">
+                <div class="parceiro-conteudo">
+                    <h5 class="parceiro-titulo">Python para Geoprocessamento</h5>
+                    <h4 class="parceiro-empresa" id="h4-parceiro-empresa">AmbientalPro</h2>
+                </div>
+            </div>
+            
+            <div class="parceiro-card">
+                <img src="../static/wp-content/uploads/2024/cursos/pos_geo.png" alt="Curso QGIS" class="parceiro-imagem">
+                <div class="parceiro-conteudo">
+                    <h4 class="parceiro-titulo">Pós-Graduação em Geoprocessamento</h4>
+                    <h4 class="parceiro-empresa" id="h4-parceiro-empresa">AmbientalPro</h2>
+                </div>
+            </div>
+            
+            <div class="parceiro-card">
+                <img src="../static/wp-content/uploads/2024/cursos/2W.png" alt="Curso GIS" class="parceiro-imagem">
+                <div class="parceiro-conteudo">
+                    <h4 class="parceiro-titulo">WebGIS para Geoprocessamento</h4>
+                    <h4 class="parceiro-empresa" id="h4-parceiro-empresa">AmbientalPro</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div></div></main>
+
     
-          <script>
-            document.getElementById('menu-toggle').addEventListener('click', function () {
-                document.querySelector('.sidebar').classList.toggle('active');
-            });
-        </script>
-        
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../static/js/dashboard.js"></script>
+    <script src="../static/js/menu.js"></script>
+    <script src="../static/js/progress_cv.js"></script>
+    <script src="../static/js/dashboard_vagas_exclusivas.js"></script>
+
+
 </body>
 </html>
