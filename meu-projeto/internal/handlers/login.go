@@ -52,17 +52,18 @@ func LoginApiHandler(db *pgxpool.Pool) http.HandlerFunc {
         var userID int
         var userType, name, hashedPassword string
         var photoPath *string // Usamos ponteiro para lidar com NULL no banco
+        var xpUser int
 
         // Query que faz JOIN com a tabela students
         query := `
-            SELECT u.id, u.name, u.user_type, u.password_hash, s.foto_path
+            SELECT u.id, u.name, u.user_type, u.password_hash, s.foto_path, s.xp_user
             FROM techvagas.users u
             LEFT JOIN techvagas.students s ON u.id = s.user_id
             WHERE u.email = $1
         `
 
         err = db.QueryRow(context.Background(), query, creds.Email).Scan(
-            &userID, &name, &userType, &hashedPassword, &photoPath,
+            &userID, &name, &userType, &hashedPassword, &photoPath, &xpUser,
         )
 
         if err != nil {
@@ -153,6 +154,13 @@ func LoginApiHandler(db *pgxpool.Pool) http.HandlerFunc {
         // Adicionar photoPath se existir
         if photoPath != nil && *photoPath != "" {
             response["user"].(map[string]interface{})["photo_url"] = *photoPath
+        }
+
+        // Adicionar XP se existir
+        if xpUser > 0 {
+            response["user"].(map[string]interface{})["xp_user"] = xpUser
+        } else {
+            response["user"].(map[string]interface{})["xp_user"] = 0
         }
 
         w.Header().Set("Content-Type", "application/json")

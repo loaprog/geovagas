@@ -102,8 +102,13 @@ func JobExclusiveHandler(db *pgxpool.Pool) http.HandlerFunc {
 				log.Println("Nenhum dado encontrado.")
 			}
 
+			response := map[string]interface{}{
+				"contagem_total": len(posts),
+				"vagas":          posts,
+			}
+			
 			w.Header().Set("Content-Type", "application/json")
-			if err := json.NewEncoder(w).Encode(posts); err != nil {
+			if err := json.NewEncoder(w).Encode(response); err != nil {
 				log.Printf("Erro ao codificar dados em JSON: %v", err)
 				http.Error(w, "Erro ao enviar resposta", http.StatusInternalServerError)
 			}

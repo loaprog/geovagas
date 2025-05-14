@@ -93,7 +93,7 @@
                             <div class="stat-icon applications">
                                 <i class="fas fa-file-alt"></i>
                             </div>
-                            <div class="stat-value">12</div>
+                            <div class="stat-value">#</div>
                             <div class="stat-label">Candidaturas</div>
                         </div>
                         
@@ -101,7 +101,7 @@
                             <div class="stat-icon views">
                                 <i class="fas fa-eye"></i>
                             </div>
-                            <div class="stat-value">24</div>
+                            <div class="stat-value">#</div>
                             <div class="stat-label">Visualizações</div>
                         </div>
                         
@@ -109,7 +109,7 @@
                             <div class="stat-icon available">
                                 <i class="fas fa-briefcase"></i>
                             </div>
-                            <div class="stat-value">45</div>
+                            <div class="stat-value" id="countJobs">#</div>
                             <div class="stat-label">Vagas disponíveis</div>
                         </div>
                         
@@ -117,14 +117,14 @@
                             <div class="stat-icon ranking">
                                 <i class="fas fa-trophy"></i>
                             </div>
-                            <div class="stat-value">#8</div>
-                            <div class="stat-label">No ranking</div>
+                            <div class="stat-value" id="xpValue">#</div>
+                            <div class="stat-label">Pontuação</div>
                         </div>
                     </div>
                     
                     <!-- Gráfico de visualizações -->
                     <div class="performance-container">
-                        <h3 class="section-title">Visualizações de perfil</h3>
+                        <h3 class="section-title">Últimas publicações</h3>
                         <div class="performance-chart">
                             <canvas id="profileViewsChart"></canvas>
                         </div>
@@ -137,74 +137,10 @@
                         <div class="users-list">
                             <div class="user-item">
                                 <span class="user-rank gold">1</span>
-                                <img src="https://ui-avatars.com/api/?name=João+Silva&background=4a90e2&color=fff&size=32" alt="João Silva" class="user-icon">
-                                <span class="user-name">João Silva</span>
-                                <span class="user-points">85</span>
-                            </div>
-                            
-                            <div class="user-item">
-                                <span class="user-rank silver">2</span>
-                                <img src="https://ui-avatars.com/api/?name=Maria+Souza&background=4a90e2&color=fff&size=32" alt="João Silva" class="user-icon">
-                                <span class="user-name">João Silva</span>
-                                <span class="user-points">72</span>
-                            </div>
-                            
-                            <div class="user-item">
-                                <span class="user-rank bronze">3</span>
-                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
-                                <span class="user-name">Carlos Oliveira</span>
-                                <span class="user-points">68</span>
-                            </div>
-
-                            <div class="user-item">
-                                <span class="user-rank">4</span>
-                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
-                                <span class="user-name">Carlos Oliveira</span>
-                                <span class="user-points">68</span>
-                            </div>
-
-                            <div class="user-item">
-                                <span class="user-rank">5</span>
-                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
-                                <span class="user-name">Carlos Oliveira</span>
-                                <span class="user-points">68</span>
-                            </div>
-
-                            <div class="user-item">
-                                <span class="user-rank">6</span>
-                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
-                                <span class="user-name">Carlos Oliveira</span>
-                                <span class="user-points">68</span>
-                            </div>
-
-                            <div class="user-item">
-                                <span class="user-rank">7</span>
-                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
-                                <span class="user-name">Carlos Oliveira</span>
-                                <span class="user-points">68</span>
-                            </div>
-
-                            <div class="user-item">
-                                <span class="user-rank">8</span>
-                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
-                                <span class="user-name">Carlos Oliveira</span>
-                                <span class="user-points">68</span>
-                            </div>
-
-                            <div class="user-item">
-                                <span class="user-rank">9</span>
-                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
-                                <span class="user-name">Carlos Oliveira</span>
-                                <span class="user-points">68</span>
-                                </div>
-
-                            <div class="user-item">
-                                <span class="user-rank">10</span>
-                                <img src="https://ui-avatars.com/api/?name=Carlos+Oliveira&background=4a90e2&color=fff&size=32" alt="Carlos Oliveira" class="user-icon">
-                                <span class="user-name">Carlos Oliveira</span>
-                                <span class="user-points">68</span>
-                            </div>
-                        
+                                <img src="https://ui-avatars.com/api/?name=João+Silva&background=4a90e2&color=fff&size=32" alt="Nome" class="user-icon">
+                                <span class="user-name">Nome</span>
+                                <span class="user-points">XP</span>
+                            </div>                        
                     </div>
                 </div>
                     
@@ -271,6 +207,8 @@
     <script src="../static/js/menu.js"></script>
     <script src="../static/js/progress_cv.js"></script>
     <script src="../static/js/dashboard_vagas_exclusivas.js"></script>
+    <script src="../static/js/dashboard_top_users.js"></script>
+    <script src="../static/js/dashboard_cards.js"></script>
 
 
 </body>

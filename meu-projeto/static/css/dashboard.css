@@ -79,6 +79,7 @@
 
 /* TOP USERS */
 /* TOP USERS - COMPACT STYLE */
+
 .top-users-container {
     background: #fff;
     border-radius: 12px;
@@ -188,7 +189,7 @@
 }
 
 .dark-mode .vaga-card {
-    background-color: #121212;
+    background-color: #1e1e1e;
 }
 
 .dark-mode .stat-value {
@@ -206,6 +207,7 @@
 
 .dark-mode .parceiro-card {
     background-color: #121212;
+
 }
 
 .dark-mode .parceiro-titulo {
@@ -217,7 +219,39 @@
 }
 
 .dark-mode .vaga-empresa {
-    color: #E0E0E0;
+    color: #3BB951;
+}
+
+.dark-mode .vaga-title {
+    color: #ffffff;
+}
+
+.vaga-title {
+    color: #000000;
+}
+
+.dark-mode .vaga-localizacao {
+    color: #ffffff;
+}
+
+.vaga-localizacao {
+    color: #000000;
+}
+
+.dark-mode .vaga-data {
+    color: #ffffff;
+}
+
+.vaga-data {
+    color: #000000;
+}
+
+.dark-mode .vaga-tags {
+    color: #ffffff;
+}
+
+.vaga-tags {
+    color: #000000;
 }
 
 .dark-mode .vaga-tag {
@@ -410,7 +444,7 @@ overflow-y: auto; /* Permite scroll apenas no body, não em elementos internos *
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
-gap: 20px;
+gap: 30px;
 margin-top: 10px;
 max-height: 300px;
 overflow-y: auto;
@@ -430,8 +464,9 @@ color: #34495e;
 cursor: pointer;
 display: flex;
 flex-direction: column;
-height: 180px;
+height: 200px;
 width: 250px;
+
 }
 
 .vaga-card:hover {
@@ -498,10 +533,16 @@ color: #95a5a6;
 }
 
 .vaga-link {
-color: #3BB951;
+color: #ffffff;
 text-decoration: none;
 font-weight: 500;
-font-size: 12px;
+font-size: 14px;
+text-align: center;
+margin-top: 10px;
+background-color: #3BB951;
+border-radius: 6px;
+padding: 8px 12px;
+
 }
 
 .vaga-link:hover {
@@ -515,7 +556,7 @@ grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
 .vaga-card {
-padding: 10px;
+padding: 15px;
 }
 
 .vaga-titulo {
@@ -541,7 +582,7 @@ border-radius: 10px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 overflow: hidden;
 transition: transform 0.3s ease;
-max-height: 220px;
+max-width: 600px;
 }
 
 .portfolio-progress {
@@ -561,20 +602,19 @@ object-fit: cover;
 
 .parceiro-conteudo {
 padding: 15px;
+margin-top: -10px;
 }
 
 .parceiro-titulo {
-font-size: 14px;
-font-weight: 600;
+font-size: 12px;
 color: #2c3e50;
-margin-bottom: 5px;
 height: 40px;
 }
 
 .parceiro-empresa {
-font-size: 14px;
+font-size: 12px;
 color: #3BB951;
-margin-bottom: 5px;
+margin-top: -5px;
 }
 
 
@@ -653,7 +693,7 @@ text-decoration: underline;
     /* Parceiros */
     .parceiros-container {
         grid-template-columns: 1fr;
-        max-height: none;
+        
     }
     
     .parceiro-card {
@@ -709,4 +749,13 @@ text-decoration: underline;
         font-size: 13px;
         height: auto;
     }
+    .dashboard-footer {
+        height: 660px;
+    }
+    .stats-container {
+        display:grid;
+    }
+
+
 }
+
