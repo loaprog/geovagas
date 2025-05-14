@@ -84,9 +84,9 @@ func RegisterUserHandler(db *pgxpool.Pool) http.HandlerFunc {
 		// Inserir usuário no banco de dados
 		var userID int
 		err = tx.QueryRow(context.Background(),
-			`INSERT INTO techvagas.users (name, email, password_hash, user_type, created_at, token) 
-			 VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
-			name, email, string(hashedPassword), "student", time.Now(), token,
+		`INSERT INTO techvagas.users (name, email, password_hash, user_type, created_at, token) 
+		 VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+		name, email, string(hashedPassword), "student", time.Now(), token,
 		).Scan(&userID)
 		if err != nil {
 			// Verifica se é uma violação de chave única
@@ -104,9 +104,9 @@ func RegisterUserHandler(db *pgxpool.Pool) http.HandlerFunc {
 		// Inserir perfil de estudante
 		_, err = tx.Exec(context.Background(),
 			`INSERT INTO techvagas.students 
-			 (user_id, telefone, cidade, estado, foto_path, created_at) 
-			 VALUES ($1, $2, $3, $4, $5, $6)`,
-			userID, phone, city, state, driveLink, time.Now(),
+			 (user_id, telefone, cidade, estado, foto_path, created_at, xp_user) 
+			 VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+			userID, phone, city, state, driveLink, time.Now(), 0,
 		)
 		if err != nil {
 			log.Printf("Erro detalhado ao inserir estudante: %v", err)
