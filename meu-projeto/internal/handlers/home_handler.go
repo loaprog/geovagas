@@ -188,3 +188,73 @@ func StudentDashdboardHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
 	}
 }
+
+func StudentDashboardCVHandler (w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/student-dashboard-cv.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}
+
+func StudentDashboardCoursesHandler (w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/student-dashboard-courses.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}
+
+func StudentDashboardJobsHandler (w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/student-dashboard-jobs.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}
+
+func StudentDashboardChatHandler (w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/student-dashboard-chat.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}
+
+func StudentDashboardCommunityHandler (w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/student-dashboard-community.html")
+	if err != nil {
+		log.Printf("Erro ao carregar template: %v", err)
+		http.Error(w, "Erro interno do servidor", http.StatusInternalServerError)
+		return
+	}
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Erro ao renderizar template: %v", err)
+		http.Error(w, "Erro interno ao renderizar página", http.StatusInternalServerError)
+	}
+}

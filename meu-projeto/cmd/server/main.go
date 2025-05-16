@@ -41,6 +41,12 @@ func main() {
 	http.HandleFunc("/interface_profissional", handlers.InterfaceProfissionalHandler)
 	http.HandleFunc("/redefinir_senha", handlers.RedefinirSenhaHandler)
 	http.HandleFunc("/student_dashboard", handlers.StudentDashdboardHandler)
+	http.HandleFunc("/student_dashboard_cv", handlers.StudentDashboardCVHandler)
+	http.HandleFunc("/student_dashboard_courses", handlers.StudentDashboardCoursesHandler)
+	http.HandleFunc("/student_dashboard_community", handlers.StudentDashboardCommunityHandler)
+	http.HandleFunc("/student_dashboard_jobs", handlers.StudentDashboardJobsHandler)
+	http.HandleFunc("/student_dashboard_chat", handlers.StudentDashboardChatHandler)
+
 
 
 

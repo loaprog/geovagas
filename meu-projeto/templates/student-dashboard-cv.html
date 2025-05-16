@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GeoVagas - Área do Usuário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../static/wp-content/uploads/2024/04/icone.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../static/css/interface.css">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="../static/css/student_dashboard_cv.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <button id="toggle-dark" class="dark-mode-toggle"><i class="fas fa-moon"></i></button>
+    <button id="menu-toggle" class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Menu Lateral -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="../static/wp-content/uploads/2024/04/mobile1.png" alt="GeoVagas" class="logo">
+        </div>
+        <div class="user-profile">
+            <img id="user-avatar" src="https://ui-avatars.com/api/?name=Usuário&background=4a90e2&color=fff" alt="Usuário" class="user-avatar">
+            <h3 id="user-name" class="user-name">Usuário</h3>
+            <div id="user-badge" class="premium-badge">
+                <!-- Dinâmico conforme tipo de usuário -->
+            </div>
+            <p id="user-email" class="user-email">email@exemplo.com</p>
+            <button class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sair</span>
+            </button>
+        </div>
+        
+        <nav class="nav-menu" id="nav-menu">
+            <a href="student_dashboard" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="student_dashboard_courses" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Cursos</span>
+            </a>
+            <a href="student_dashboard_cv" class="nav-item active">
+                <i class="fas fa-file-alt"></i>
+                <span>Meu Currículo</span>
+            </a>
+            <a href="student_dashboard_jobs" class="nav-item">
+                <i class="fas fa-briefcase"></i>
+                <span>Vagas</span>
+            </a>
+            <a href="student_dashboard_chat" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </a>
+            <a href="student_dashboard_community" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Comunidade</span>
+            </a>
+        </nav>
+
+        <!-- Container da barra de progresso -->
+        <h0 style="text-align: center; margin-top: 10px; margin-bottom: 20px;font-size: 20px; color: #ff0000; font-weight: bold;">PLATAFORMA EM DESENVOLVIMENTO</h0>
+        <div class="portfolio-progress">
+            <span class="progress-percentage">0%</span>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+                <p class="progress-label">Progresso do Currículo</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+    <div class="header">
+        <h1 class="page-title-cv" id="page-title-cv" style="font-size: 28.8px;">Meu <span style="color: #3BB951;">Currículo </span></h1>
+        <p class="page-subtitle" id="page-subtitle">Deixe seu currículo sempre atualizado para ser encontrado por recrutadores com facilidade</p>
+        
+        <!-- Adicione esta div com os botões -->
+        <div class="cv-mode-buttons">
+            <button id="edit-cv-btn" class="edit-cv-btn active-mode">
+                <i class="fas fa-edit"></i> Editar Currículo
+            </button>
+            <button id="save-cv-btn" class="edit-cv-btn active-mode" style="display: none;">
+                <i class="fas fa-save"></i> Salvar Alterações
+            </button>
+            <button id="preview-cv-btn" class="preview-cv-btn">
+                <i class="fas fa-eye"></i> Visualizar como Recrutador
+            </button>
+        </div>
+    </div>
+        
+        <div class="dashboard-content">
+            <div class="cv-container">
+                <div class="cv-header cv-flex-container">
+                    <div class="user-profile">
+                        <div class="avatar-container">
+                            <img id="modal-avatar-cv" src="https://ui-avatars.com/api/?name=Usuário&background=4a90e2&color=fff" alt="Usuário" class="user-avatar-cv">
+                            <button class="change-photo-btn" id="change-photo-btn">Alterar foto</button>
+                        </div>
+                    </div>
+
+                    <div class="cv-info-group">
+                        <div class="cv-personal-info">
+                            <h2 id="user-name-cv" style="color: #3BB951;">Nome do Usuário</h2>
+                            <p id="user-desired-job"><i class="fas fa-briefcase"></i> <span class="cv-value">Cargo Desejado</span></p>
+                            <p id="user-location"><i class="fas fa-map-marker-alt"></i> <span class="cv-value">Cidade, Estado</span></p>
+                            <p id="user-phone"><i class="fas fa-phone"></i> <span class="cv-value">Telefone</span></p>
+                        </div>
+
+                        <div class="cv-about-me">
+                            <h3><i class="fas fa-user"></i> Sobre Mim</h3>
+                            <p id="user-bio" class="cv-text">Biografia do usuário...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <h3><i class="fas fa-graduation-cap"></i> Habilidades Técnicas</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span class="skill-name">QGiS</span>
+                            <select class="skill-level" id="qgis-skill">
+                                <option value="sem_experiencia">Sem Experiência</option>
+                                <option value="basico">Básico</option>
+                                <option value="intermediario">Intermediário</option>
+                                <option value="avancado">Avançado</option>
+                            </select>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">ArcGIS</span>
+                            <select class="skill-level" id="arcgis-skill">
+                                <option value="sem_experiencia">Sem Experiência</option>
+                                <option value="basico">Básico</option>
+                                <option value="intermediario">Intermediário</option>
+                                <option value="avancado">Avançado</option>
+                            </select>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">AutoCAD</span>
+                            <select class="skill-level" id="autocad-skill">
+                                <option value="sem_experiencia">Sem Experiência</option>
+                                <option value="basico">Básico</option>
+                                <option value="intermediario">Intermediário</option>
+                                <option value="avancado">Avançado</option>
+                            </select>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <select class="skill-level" id="python-skill">
+                                <option value="sem_experiencia">Sem Experiência</option>
+                                <option value="basico">Básico</option>
+                                <option value="intermediario">Intermediário</option>
+                                <option value="avancado">Avançado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <h3><i class="fas fa-language"></i> Habilidades Complementares</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span class="skill-name">Inglês</span>
+                            <select class="skill-level" id="ingles-skill">
+                                <option value="sem_experiencia">Sem Experiência</option>
+                                <option value="basico">Básico</option>
+                                <option value="intermediario">Intermediário</option>
+                                <option value="avancado">Avançado</option>
+                            </select>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Oratória</span>
+                            <select class="skill-level" id="oratoria-skill">
+                                <option value="sem_experiencia">Sem Experiência</option>
+                                <option value="basico">Básico</option>
+                                <option value="intermediario">Intermediário</option>
+                                <option value="avancado">Avançado</option>
+                            </select>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Entrevista</span>
+                            <select class="skill-level" id="entrevista-skill">
+                                <option value="sem_experiencia">Sem Experiência</option>
+                                <option value="basico">Básico</option>
+                                <option value="intermediario">Intermediário</option>
+                                <option value="avancado">Avançado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Currículo com a mesma estrutura do Portfólio -->
+        <!-- Seções de Currículo e Portfólio lado a lado -->
+        <div class="documents-row">
+            <!-- Seção de Currículo -->
+            <div class="document-section">
+                <h3><i class="fas fa-file-alt"></i> Currículo Completo</h3>
+                <div class="document-question">
+                    <p>Você já tem um currículo atualizado para enviar?</p>
+                    <div class="document-options">
+                        <button class="doc-btn yes-btn doc-active">Sim</button>
+                        <button class="doc-btn no-btn">Não</button>
+                    </div>
+                </div>
+                
+                <div class="document-upload-container" id="cv-upload-container">
+                    <label for="cv-upload" class="upload-btn">
+                        <i class="fas fa-upload"></i> Enviar Currículo (PDF)
+                    </label>
+                    <input type="file" id="cv-upload" accept=".pdf" style="display: none;">
+                    <span class="file-name" id="cv-file-name">Nenhum arquivo selecionado</span>
+                </div>
+                
+                <div class="document-suggestion" id="cv-suggestion" style="display: none;">
+                    <p>Um currículo atualizado é essencial para ser encontrado por recrutadores!</p>
+                    <p>Precisa de ajuda para criar um currículo profissional?</p>
+                    <a href="#" class="doc-link-btn">Aprenda a criar seu currículo</a>
+                </div>
+            </div>
+
+            <!-- Seção de Portfólio -->
+            <div class="document-section">
+                <h3><i class="fas fa-briefcase"></i> Portfólio</h3>
+                <div class="document-question">
+                    <p>Você tem um portfólio para compartilhar?</p>
+                    <div class="document-options">
+                        <button class="doc-btn yes-btn doc-active">Sim</button>
+                        <button class="doc-btn no-btn">Não</button>
+                    </div>
+                </div>
+                
+                <div class="document-upload-container" id="portfolio-upload-container">
+                    <label for="portfolio-upload" class="upload-btn">
+                        <i class="fas fa-upload"></i> Enviar Portfólio (PDF)
+                    </label>
+                    <input type="file" id="portfolio-upload" accept=".pdf" style="display: none;">
+                    <span class="file-name" id="portfolio-file-name">Nenhum arquivo selecionado</span>
+                </div>
+                
+                <div class="document-suggestion" id="portfolio-suggestion" style="display: none;">
+                    <p>Um portfólio pode aumentar suas chances de ser contratado em até 70%!</p>
+                    <p>Conheça nossos cursos parceiros e crie um portfólio impressionante:</p>
+                    <a href="#" class="doc-link-btn">Ver Cursos Recomendados</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- [Restante do código permanece igual] -->
+    </main>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../static/js/dashboard.js"></script>
+    <script src="../static/js/menu.js"></script>
+    <script src="../static/js/progress_cv.js"></script>
+
+
+
+<!-- Modal de Visualização como Recrutador -->
+<div id="recruiter-modal" class="recruiter-modal">
+    <div class="recruiter-modal-content">
+        <div class="recruiter-modal-header">
+            <h3>Visualização do Recrutador</h3>
+            <button id="close-recruiter-modal" class="close-modal-btn">&times;</button>
+        </div>
+        <div class="recruiter-modal-body">
+            <div class="candidate-card">
+                <div class="candidate-header">
+                    <img id="modal-avatar" src="https://ui-avatars.com/api/?name=Usuário&background=4a90e2&color=fff" alt="Candidato" class="candidate-avatar">
+                    <div class="candidate-info">
+                        <h2 id="modal-name">Nome do Candidato</h2>
+                        <p id="modal-position"><i class="fas fa-briefcase"></i> Cargo Desejado</p>
+                        <p id="modal-email"><i class="fas fa-envelope"></i> email@exemplo.com</p>
+                        <p id="modal-location"><i class="fas fa-map-marker-alt"></i> Localização</p>
+                    </div>
+                </div>
+                
+                <div class="candidate-section">
+                    <h3><i class="fas fa-user"></i> Sobre</h3>
+                    <p id="modal-about">Descrição sobre o candidato...</p>
+                </div>
+                
+                <div class="candidate-section">
+                    <h3><i class="fas fa-star"></i> Habilidades</h3>
+                    <div class="skills-container" id="modal-skills">
+                        <!-- Habilidades serão inseridas aqui via JS -->
+                    </div>
+                </div>
+                
+                <div class="candidate-section">
+                    <h3><i class="fas fa-file-alt"></i> Documentos</h3>
+                    <div class="documents-container">
+                        <button id="view-cv-btn" class="doc-btn"><i class="fas fa-file-pdf"></i> Ver Currículo</button>
+                        <button id="view-portfolio-btn" class="doc-btn"><i class="fas fa-briefcase"></i> Ver Portfólio</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recruiter-actions">
+                <button id="reject-btn" class="action-btn reject-btn"><i class="fas fa-times"></i> Recusar</button>
+                <button id="approve-btn" class="action-btn approve-btn"><i class="fas fa-check"></i> Aprovar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos do modal
+    const recruiterModal = document.getElementById('recruiter-modal');
+    const previewCvBtn = document.getElementById('preview-cv-btn');
+    const closeModalBtn = document.getElementById('close-recruiter-modal');
+    const editCvBtn = document.getElementById('edit-cv-btn');
+    const saveCvBtn = document.getElementById('save-cv-btn');
+    
+    // Elementos editáveis do currículo
+    const editableElements = document.querySelectorAll('.cv-value, .cv-text');
+    const skillSelects = document.querySelectorAll('.skill-level');
+    const fileInputs = document.querySelectorAll('input[type="file"]');
+    const docButtons = document.querySelectorAll('.doc-btn');
+    
+    // Estado inicial - modo edição ativo
+    let isEditMode = false;
+    
+    // Função para alternar entre modos
+    function toggleEditMode(enableEdit) {
+        isEditMode = enableEdit;
+        
+        if (enableEdit) {
+            // Modo edição
+            editCvBtn.style.display = 'none';
+            saveCvBtn.style.display = 'inline-block';
+            previewCvBtn.classList.remove('active-mode');
+            
+            // Tornar elementos editáveis
+            editableElements.forEach(el => {
+                el.contentEditable = true;
+                el.style.backgroundColor = '#f8f9fa';
+                el.style.padding = '2px 5px';
+                el.style.borderRadius = '3px';
+            });
+            
+            // Habilitar selects de habilidades
+            skillSelects.forEach(select => {
+                select.disabled = false;
+            });
+            
+            // Habilitar inputs de arquivo
+            fileInputs.forEach(input => {
+                input.disabled = false;
+            });
+            
+            // Habilitar botões de documento
+            docButtons.forEach(btn => {
+                btn.disabled = false;
+            });
+        } else {
+            // Modo visualização
+            editCvBtn.style.display = 'inline-block';
+            saveCvBtn.style.display = 'none';
+            
+            // Tornar elementos não editáveis
+            editableElements.forEach(el => {
+                el.contentEditable = false;
+                el.style.backgroundColor = 'transparent';
+                el.style.padding = '0';
+            });
+            
+            // Desabilitar selects de habilidades
+            skillSelects.forEach(select => {
+                select.disabled = true;
+            });
+            
+            // Desabilitar inputs de arquivo
+            fileInputs.forEach(input => {
+                input.disabled = true;
+            });
+            
+            // Desabilitar botões de documento
+            docButtons.forEach(btn => {
+                btn.disabled = true;
+            });
+        }
+    }
+    
+    // Inicializar no modo visualização
+    toggleEditMode(false);
+    
+    // Evento para botão de edição
+    editCvBtn.addEventListener('click', function() {
+        toggleEditMode(true);
+    });
+
+    // Evento para botão de salvar
+    saveCvBtn.addEventListener('click', function() {
+        // Aqui você pode adicionar a lógica para salvar os dados
+        // Por exemplo, enviar para o backend
+        const skillLevels = {};
+        skillSelects.forEach(select => {
+            skillLevels[select.id] = select.value;
+        });
+
+        const userData = {
+            // Coletar dados editáveis
+            name: document.getElementById('user-name-cv').textContent,
+            desiredJob: document.getElementById('user-desired-job').querySelector('.cv-value').textContent,
+            location: document.getElementById('user-location').querySelector('.cv-value').textContent,
+            phone: document.getElementById('user-phone').querySelector('.cv-value').textContent,
+            bio: document.getElementById('user-bio').textContent,
+            skills: skillLevels
+        };
+
+        // Aqui você pode enviar userData para o backend
+        console.log('Dados a serem salvos:', userData);
+
+        // Voltar para modo visualização
+        toggleEditMode(false);
+        
+        // Mostrar mensagem de sucesso
+        alert('Alterações salvas com sucesso!');
+    });
+    
+    // Evento para botão de visualização como recrutador
+    previewCvBtn.addEventListener('click', function() {
+        toggleEditMode(false);
+        openRecruiterModal();
+    });
+    
+    // Função para abrir o modal do recrutador
+    function openRecruiterModal() {
+        // Preencher os dados do modal com os dados do currículo
+        document.getElementById('modal-avatar').src = document.getElementById('modal-avatar-cv').src;
+        document.getElementById('modal-name').textContent = document.getElementById('user-name-cv').textContent;
+        document.getElementById('modal-position').innerHTML = `<i class="fas fa-briefcase"></i> ${document.getElementById('user-desired-job').querySelector('.cv-value').textContent}`;
+        document.getElementById('modal-location').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${document.getElementById('user-location').querySelector('.cv-value').textContent}`;
+        document.getElementById('modal-about').textContent = document.getElementById('user-bio').textContent;
+        
+        // Preencher habilidades
+        const skillsContainer = document.getElementById('modal-skills');
+        skillsContainer.innerHTML = '';
+        
+        // Adicionar habilidades técnicas e complementares
+        skillSelects.forEach(select => {
+            const skillName = select.parentElement.querySelector('.skill-name').textContent;
+            const skillLevel = select.options[select.selectedIndex].text;
+            const skillTag = document.createElement('div');
+            skillTag.className = 'skill-tag';
+            skillTag.textContent = `${skillName}: ${skillLevel}`;
+            skillsContainer.appendChild(skillTag);
+        });
+        
+        // Mostrar o modal
+        recruiterModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Fechar modal quando clicar no botão de fechar
+    closeModalBtn.addEventListener('click', function() {
+        recruiterModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    // Fechar modal quando clicar fora do conteúdo
+    recruiterModal.addEventListener('click', function(e) {
+        if (e.target === recruiterModal) {
+            recruiterModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Ações do recrutador
+    document.getElementById('reject-btn').addEventListener('click', function() {
+        alert('Candidato recusado. Esta é apenas uma visualização simulada.');
+        recruiterModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    document.getElementById('approve-btn').addEventListener('click', function() {
+        alert('Candidato aprovado! Esta é apenas uma visualização simulada.');
+        recruiterModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    // Visualizar documentos (simulação)
+    document.getElementById('view-cv-btn').addEventListener('click', function() {
+        alert('Visualizando currículo completo. Em uma implementação real, isso abriria o PDF enviado.');
+    });
+    
+    document.getElementById('view-portfolio-btn').addEventListener('click', function() {
+        alert('Visualizando portfólio. Em uma implementação real, isso abriria o arquivo enviado.');
+    });
+    
+    // Restante do seu código existente...
+});
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+    // Configurar seção de currículo
+    setupDocumentSection(
+        document.querySelector('.document-section:nth-child(1) .yes-btn'),
+        document.querySelector('.document-section:nth-child(1) .no-btn'),
+        'cv-upload-container',
+        'cv-suggestion'
+    );
+    
+    // Configurar seção de portfólio
+    setupDocumentSection(
+        document.querySelector('.document-section:nth-child(2) .yes-btn'),
+        document.querySelector('.document-section:nth-child(2) .no-btn'),
+        'portfolio-upload-container',
+        'portfolio-suggestion'
+    );
+
+    // Função genérica para configurar as seções
+    function setupDocumentSection(yesBtn, noBtn, uploadContainerId, suggestionId) {
+        const uploadContainer = document.getElementById(uploadContainerId);
+        const suggestion = document.getElementById(suggestionId);
+
+        if (yesBtn && noBtn && uploadContainer && suggestion) {
+            yesBtn.addEventListener('click', function() {
+                uploadContainer.style.display = 'flex';
+                suggestion.style.display = 'none';
+                yesBtn.classList.add('doc-active');
+                noBtn.classList.remove('doc-active');
+            });
+            
+            noBtn.addEventListener('click', function() {
+                uploadContainer.style.display = 'none';
+                suggestion.style.display = 'block';
+                noBtn.classList.add('doc-active');
+                yesBtn.classList.remove('doc-active');
+            });
+        }
+    }
+
+    // Mostrar nome do arquivo do currículo
+    document.getElementById('cv-upload')?.addEventListener('change', function() {
+        const fileName = this.files.length > 0 ? this.files[0].name : 'Nenhum arquivo selecionado';
+        document.getElementById('cv-file-name').textContent = fileName;
+    });
+
+    // Mostrar nome do arquivo do portfólio
+    document.getElementById('portfolio-upload')?.addEventListener('change', function() {
+        const fileName = this.files.length > 0 ? this.files[0].name : 'Nenhum arquivo selecionado';
+        document.getElementById('portfolio-file-name').textContent = fileName;
+    });
+});
+</script>
+</body>
+</html>

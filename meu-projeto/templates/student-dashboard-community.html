@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GeoVagas - Comunidade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../static/wp-content/uploads/2024/04/icone.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="../static/css/interface.css">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="../static/css/student_dashboard_community.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <button id="toggle-dark" class="dark-mode-toggle"><i class="fas fa-moon"></i></button>
+    <button id="menu-toggle" class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Menu Lateral -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="../static/wp-content/uploads/2024/04/mobile1.png" alt="GeoVagas" class="logo">
+        </div>
+        <div class="user-profile">
+            <img id="user-avatar" src="https://ui-avatars.com/api/?name=Usuário&background=4a90e2&color=fff" alt="Usuário" class="user-avatar">
+            <h3 id="user-name" class="user-name">Usuário</h3>
+            <div id="user-badge" class="premium-badge">
+                <!-- Dinâmico conforme tipo de usuário -->
+            </div>
+            <p id="user-email" class="user-email">email@exemplo.com</p>
+            <button class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sair</span>
+            </button>
+        </div>
+        
+        <nav class="nav-menu" id="nav-menu">
+            <a href="student_dashboard" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="student_dashboard_courses" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Cursos</span>
+            </a>
+            <a href="student_dashboard_cv" class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                <span>Meu Currículo</span>
+            </a>
+            <a href="student_dashboard_jobs" class="nav-item">
+                <i class="fas fa-briefcase"></i>
+                <span>Vagas</span>
+            </a>
+            <a href="student_dashboard_chat" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+            </a>
+            <a href="student_dashboard_community" class="nav-item active">
+                <i class="fas fa-users"></i>
+                <span>Comunidade</span>
+            </a>
+        </nav>
+
+        <!-- Container da barra de progresso -->
+        <h0 style="text-align: center; margin-top: 10px; margin-bottom: 20px;font-size: 20px; color: #ff0000; font-weight: bold;">PLATAFORMA EM DESENVOLVIMENTO</h0>
+        <div class="portfolio-progress">
+            <span class="progress-percentage">0%</span>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+                <p class="progress-label">Progresso do Currículo</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="header">
+            <h1 class="page-title-cv" id="page-title-cv" style="font-size: 28.8px;">
+                Comunidade <span style="color: #3BB951;">GeoVagas</span>
+            </h1>
+            <p class="page-subtitle" id="page-subtitle">
+                Participe de discussões, troque experiências e colabore com outros profissionais da área!
+            </p>
+            
+            <div class="dashboard-content">
+                <div class="cv-container">
+                    <!-- Espaço para posts da comunidade, tópicos de discussão, etc. -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../static/js/dashboard.js"></script>
+    <script src="../static/js/menu.js"></script>
+    <script src="../static/js/progress_cv.js"></script>
+
+</body>
+</html>

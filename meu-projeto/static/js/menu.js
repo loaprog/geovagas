@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const userData = JSON.parse(localStorage.getItem('userData'));
 
     if (!userData) {
@@ -6,17 +6,23 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
+    // Atualizar informações básicas
     document.getElementById('user-name').textContent = userData.name;
     document.getElementById('user-email').textContent = userData.email;
-    document.getElementById('page-title').innerHTML = `Bem-vindo, <span>${userData.name.split(' ')[0]}</span>`;
+                                                                          
+    const userNameCv = document.getElementById('user-name-cv');
+    if (userNameCv) {
+        userNameCv.textContent = userData.name;
+    }
+    const pageTitle = document.getElementById('page-title');
+    if (pageTitle) {
+        pageTitle.innerHTML = `Bem-vindo, <span>${userData.name.split(' ')[0]}</span>`;
+    }
 
-    // Adicionar badges dos cursos se existirem
+    // Adicionar badges dos cursos
     const userBadgeContainer = document.getElementById('user-badge');
     if (userData.courses && userData.courses.length > 0) {
-        // Limpa o container primeiro
         userBadgeContainer.innerHTML = '';
-        
-        // Adiciona cada curso como um badge
         userData.courses.forEach(course => {
             if (course.slug) {
                 const courseBadge = document.createElement('span');
@@ -27,8 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const avatar = document.getElementById('user-avatar');
-
+    // Funções auxiliares para o avatar
     function getInitials(name) {
         const parts = name.trim().split(' ');
         if (parts.length === 1) return parts[0][0].toUpperCase();
@@ -37,40 +42,47 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setFallbackAvatar(name) {
         const initials = getInitials(name);
-        const fallbackUrl = `https://ui-avatars.com/api/?name=${initials}&background=4a90e2&color=fff`;
-        console.warn('Imagem de perfil falhou ao carregar. Usando fallback:', fallbackUrl);
-        avatar.src = fallbackUrl;
+        const fallbackUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(initials)}&background=4a90e2&color=fff`;
+        console.warn('Usando avatar fallback:', fallbackUrl);
+        updateAllAvatars(fallbackUrl);
     }
 
-    // Configura os handlers de erro primeiro
-    avatar.onerror = function() {
-        console.error('Erro ao carregar imagem de perfil:', avatar.src);
-        setFallbackAvatar(userData.name);
-    };
+    function updateAllAvatars(imageUrl) {
+        const avatars = [
+            document.getElementById('user-avatar'),
+            document.getElementById('modal-avatar-cv'),
+            document.getElementById('modal-avatar')
+        ];
 
-    avatar.onload = function() {
-        console.log('Imagem de perfil carregada com sucesso:', avatar.src);
-    };
-    
+        avatars.forEach(avatar => {
+            if (avatar) {
+                avatar.src = imageUrl;
+                avatar.onerror = () => {
+                    console.error('Erro ao carregar imagem:', imageUrl);
+                    setFallbackAvatar(userData.name);
+                };
+            }
+        });
+    }
+
+    // Carregar a foto do usuário
     if (userData.photo_url) {
         const img = new Image();
         img.crossOrigin = 'Anonymous';
-        
+
         img.onload = function() {
-            avatar.src = this.src;
+            updateAllAvatars(this.src);
             console.log('Imagem carregada com sucesso:', this.src);
         };
-        
+
         img.onerror = function() {
             console.error('Falha ao carregar imagem, usando fallback');
             setFallbackAvatar(userData.name);
         };
-        
-        // Tenta primeiro com a URL direta
+
         if (userData.photo_url.match(/\.(jpeg|jpg|gif|png|webp)(\?.*)?$/i)) {
             img.src = userData.photo_url;
         } else {
-            // Usa a URL formatada do Google Drive
             const formattedUrl = formatGoogleDriveUrl(userData.photo_url);
             console.log('Tentando carregar:', formattedUrl);
             img.src = formattedUrl;
@@ -78,23 +90,17 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         setFallbackAvatar(userData.name);
     }
-
-    // Restante do seu código...
 });
 
-// Função melhorada para formatar URLs do Google Drive
 function formatGoogleDriveUrl(url) {
-    const fileId = url.match(/[-\w]{25,}/); // Extrai o ID do arquivo
+    const fileId = url.match(/[-\w]{25,}/);
     if (fileId) {
-        // Use o proxy do Google Drive ou seu próprio backend
         return `https://lh3.googleusercontent.com/d/${fileId[0]}=s500?authuser=0`;
-        // Ou crie um endpoint no seu backend:
-        // return `/api/drive-proxy?id=${fileId[0]}`;
     }
     return url;
 }
 
-document.querySelector('.logout-btn').addEventListener('click', function() {
+document.querySelector('.logout-btn').addEventListener('click', function () {
     localStorage.removeItem('userData');
     window.location.href = '/login_profissional';
 });
