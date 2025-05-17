@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #36943C;
-    --secondary-color: #42B14B;
+    --primary-color: #2ABC68;
+    --secondary-color: #2ABC68;
     --text-color: #333;
     --light-gray: #f5f5f5;
     --white: #ffffff;
@@ -11,7 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -142,11 +142,11 @@ body {
 .nav-item i {
     margin-right: 12px;
     font-size: 1.1rem;
-    color: var(--primary-color);
+    color: #2ABC68;
 }
 
 .nav-item.active, .nav-item:hover {
-    background-color: var(--primary-color);
+    background-color: #2ABC68;
     color: white;
 }
 
@@ -449,7 +449,7 @@ body.dark-mode .span {
 }
 
 body.dark-mode .main-content {
-    background-color: #121212;
+    background-color: #1E2021;
     color: #e0e0e0;
 }
 
@@ -465,7 +465,7 @@ body.dark-mode {
 }
 
 body.dark-mode .sidebar {
-    background-color: #1e1e1e;
+    background-color: #181A1B;
 }
 
 body.dark-mode .nav-item {
@@ -473,12 +473,12 @@ body.dark-mode .nav-item {
 }
 
 body.dark-mode .nav-item.active {
-    background-color: #333;
+    background-color: #2ABC68;
     color: #fff;
 }
 
 body.dark-mode .progress-bar {
-    background-color: #ffffff;
+    background-color: #2A2D2F;
 }
 
 
@@ -491,4 +491,17 @@ body.dark-mode .progress-bar {
     font-size: 1.5rem;
     cursor: pointer;
     color: inherit;
+}
+
+.dark-mode .dev {
+    color: #ffffff;
+}
+
+.dev {
+    text-align: center;
+    margin-top: 10px;
+    color: #ff0000;
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: bold;
 }

@@ -500,7 +500,7 @@ blockquote.has-accent-color,
   color: #42b14b;
 }
 .wp-block-pullquote blockquote {
-  font:  normal  16px / 1.6em "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:  normal  16px / 1.6em "Roboto", Helvetica, Arial, Verdana, sans-serif;
   font-size: 22px;
   line-height: 28px;
 }
@@ -518,7 +518,7 @@ blockquote.has-accent-color,
 .wp-block-cover .wp-block-cover-image-text,
 .wp-block-cover .wp-block-cover-text,
 .wp-block-cover h2 {
-  font:  normal 700 24px / 34px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:  normal 700 24px / 34px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   text-transform: none;
 }
 .wp-block-categories li a,
@@ -680,32 +680,32 @@ a.elementor-button:visited:focus,
   --e-global-color-the7_buttons_hover_border_color_mode: #42b14b;
   --e-global-color-the7_dividers_color: rgba(0,0,0,0.08);
   --e-global-color-the7_general_content_boxes_bg_color: rgba(0,0,0,0.04);
-  --e-global-typography-the7_h1-font-family: "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  --e-global-typography-the7_h1-font-family: "Roboto", Helvetica, Arial, Verdana, sans-serif;
   --e-global-typography-the7_h1-font-weight: 700;
   --e-global-typography-the7_h1-text-transform: none;
   --e-global-typography-the7_h1-font-size: 36px;
   --e-global-typography-the7_h1-line-height: 46px;
-  --e-global-typography-the7_h2-font-family: "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  --e-global-typography-the7_h2-font-family: "Roboto", Helvetica, Arial, Verdana, sans-serif;
   --e-global-typography-the7_h2-font-weight: 700;
   --e-global-typography-the7_h2-text-transform: none;
   --e-global-typography-the7_h2-font-size: 28px;
   --e-global-typography-the7_h2-line-height: 38px;
-  --e-global-typography-the7_h3-font-family: "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  --e-global-typography-the7_h3-font-family: "Roboto", Helvetica, Arial, Verdana, sans-serif;
   --e-global-typography-the7_h3-font-weight: 700;
   --e-global-typography-the7_h3-text-transform: none;
   --e-global-typography-the7_h3-font-size: 24px;
   --e-global-typography-the7_h3-line-height: 34px;
-  --e-global-typography-the7_h4-font-family: "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  --e-global-typography-the7_h4-font-family: "Roboto", Helvetica, Arial, Verdana, sans-serif;
   --e-global-typography-the7_h4-font-weight: 700;
   --e-global-typography-the7_h4-text-transform: none;
   --e-global-typography-the7_h4-font-size: 20px;
   --e-global-typography-the7_h4-line-height: 30px;
-  --e-global-typography-the7_h5-font-family: "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  --e-global-typography-the7_h5-font-family: "Roboto", Helvetica, Arial, Verdana, sans-serif;
   --e-global-typography-the7_h5-font-weight: 700;
   --e-global-typography-the7_h5-text-transform: none;
   --e-global-typography-the7_h5-font-size: 16px;
   --e-global-typography-the7_h5-line-height: 26px;
-  --e-global-typography-the7_h6-font-family: "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  --e-global-typography-the7_h6-font-family: "Roboto", Helvetica, Arial, Verdana, sans-serif;
   --e-global-typography-the7_h6-font-weight: 700;
   --e-global-typography-the7_h6-text-transform: none;
   --e-global-typography-the7_h6-font-size: 14px;
@@ -726,13 +726,13 @@ a.elementor-button:visited:focus,
   --e-global-typography-the7_fonts_woo_content-text-transform: none;
   --e-global-typography-the7_fonts_woo_content-font-size: 20px;
   --e-global-typography-the7_fonts_woo_content-line-height: 30px;
-  --e-global-typography-the7_small_size-font-family: "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  --e-global-typography-the7_small_size-font-family: "Roboto", Helvetica, Arial, Verdana, sans-serif;
   --e-global-typography-the7_small_size-font-size: 13px;
   --e-global-typography-the7_small_size-line-height: 1.4em;
-  --e-global-typography-the7_normal_size-font-family: "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  --e-global-typography-the7_normal_size-font-family: "Roboto", Helvetica, Arial, Verdana, sans-serif;
   --e-global-typography-the7_normal_size-font-size: 15px;
   --e-global-typography-the7_normal_size-line-height: 1.5em;
-  --e-global-typography-the7_big_size-font-family: "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  --e-global-typography-the7_big_size-font-family: "Roboto", Helvetica, Arial, Verdana, sans-serif;
   --e-global-typography-the7_big_size-font-size: 16px;
   --e-global-typography-the7_big_size-line-height: 1.6em;
 }
@@ -1621,7 +1621,7 @@ blockquote,
 .masthead .top-bar .wc-ico-cart,
 .masthead .top-bar .text-area,
 .masthead .top-bar .customSelectInner {
-  font:  400 15px / 21px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:  400 15px / 21px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   text-transform: none;
 }
 .masthead .top-bar .shopping-cart,
@@ -1775,7 +1775,7 @@ blockquote,
   color: #888888;
 }
 .dt-mobile-header .mini-search .submit {
-  font:   500 16px / 20px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:   500 16px / 20px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   color: #ffffff;
 }
 .mobile-header-bar .mobile-mini-widgets .mini-search .submit {
@@ -1865,7 +1865,7 @@ blockquote,
 }
 .dt-mobile-header .mini-login,
 .dt-mobile-header .mini-login .submit {
-  font:   500 16px / 20px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:   500 16px / 20px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   color: #ffffff;
 }
 .dt-mobile-header .mini-login i,
@@ -1922,7 +1922,7 @@ a.mini-contacts:hover {
   margin-right: 5.35714285714px;
 }
 .dt-mobile-header .mini-contacts {
-  font:   500 16px / 20px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:   500 16px / 20px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   color: #ffffff;
 }
 .dt-mobile-header .mini-contacts i {
@@ -2025,7 +2025,7 @@ a.mini-contacts:hover {
   color: #c9c9c9;
 }
 .dt-mobile-header .text-area {
-  font:   500 16px / 20px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:   500 16px / 20px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   color: #ffffff;
 }
 .mobile-header-bar .mobile-mini-widgets .text-area {
@@ -2068,12 +2068,12 @@ a.mini-contacts:hover {
 .masthead .top-bar .menu-select,
 .masthead .top-bar .mini-nav > ul:not(.mini-sub-nav) > li > a {
   color: #c9c9c9;
-  font:  400 15px / 21px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:  400 15px / 21px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   text-transform: none;
 }
 .dt-mobile-header .menu-select,
 .dt-mobile-header .mini-nav > ul:not(.mini-sub-nav) > li > a {
-  font:   500 16px / 20px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:   500 16px / 20px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   color: #ffffff;
 }
 .mobile-header-bar .mobile-mini-widgets .menu-select,
@@ -2097,11 +2097,11 @@ a.mini-contacts:hover {
 }
 .top-bar .mini-nav .customSelectInner {
   color: #c9c9c9;
-  font:  400 15px / 21px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:  400 15px / 21px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   text-transform: none;
 }
 .dt-mobile-header .mini-nav .customSelectInner {
-  font:   500 16px / 20px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:   500 16px / 20px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   color: #ffffff;
 }
 .mobile-header-bar .mobile-mini-widgets .mini-nav .customSelectInner {
@@ -2118,7 +2118,7 @@ a.mini-contacts:hover {
   color: #eeeeee;
 }
 .dt-mobile-header .mini-nav {
-  font:   500 16px / 20px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:   500 16px / 20px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   color: #ffffff;
 }
 .mobile-header-bar .mobile-mini-widgets .mini-nav {
@@ -2179,7 +2179,7 @@ a.mini-contacts:hover {
   color: inherit;
 }
 .header-elements-button-1 {
-  font:   500 14px / 18px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:   500 14px / 18px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   padding: 10px 20px 10px 20px;
   border-radius: 100px;
 }
@@ -2223,7 +2223,7 @@ a.mini-contacts:hover {
   box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,0);
 }
 .header-elements-button-2 {
-  font:   500 14px / 18px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:   500 14px / 18px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   padding: 10px 20px 10px 20px;
   border-radius: 100px;
 }
@@ -2329,7 +2329,7 @@ a.mini-contacts:hover {
   left: 12px;
 }
 .main-nav > li > a .menu-text {
-  font:  normal 600 14px / 18px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:  normal 600 14px / 18px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   text-transform: uppercase;
 }
 .main-nav.level-arrows-on > li.has-children > a .menu-item-text {
@@ -2520,7 +2520,7 @@ li:not(.dt-mega-menu) .sub-nav {
   top: -9px;
 }
 .main-nav .sub-nav > li > a .menu-text {
-  font: normal  500 13px / 17px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font: normal  500 13px / 17px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   text-transform: uppercase;
 }
 .sub-downwards .sub-nav .next-level-button:before,
@@ -2841,7 +2841,7 @@ html:not(.touchevents) .dt-mobile-header::-webkit-scrollbar-track {
   margin-bottom: 16px;
 }
 .mobile-main-nav li > a .menu-text {
-  font:   700 16px / 20px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:   700 16px / 20px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   color: #ffffff;
   text-transform: none;
 }
@@ -2951,7 +2951,7 @@ html:not(.touchevents) .dt-mobile-header::-webkit-scrollbar-track {
 .top-bar .sub-nav > ul > li > a,
 #bottom-bar .sub-nav > ul > li > a {
   color: #ffffff;
-  font: normal  500 13px / 17px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font: normal  500 13px / 17px "Roboto", Helvetica, Arial, Verdana, sans-serif;
 }
 #page .masthead.sticky-on .header-bar,
 #phantom.masthead .header-bar,
@@ -3149,7 +3149,7 @@ html:not(.touchevents) .dt-mobile-header::-webkit-scrollbar-track {
 .page-title h1 *,
 .page-title h1 a:hover,
 #page .page-title .entry-title {
-  font:  normal 700 34px / 44px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:  normal 700 34px / 44px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   color: #333333;
   text-transform: none;
 }
@@ -3179,7 +3179,7 @@ html:not(.touchevents) .dt-mobile-header::-webkit-scrollbar-track {
 .fancy-header h1,
 .fancy-header h2,
 .fancy-header .fancy-subtitle {
-  font:  normal 700 34px / 44px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:  normal 700 34px / 44px "Roboto", Helvetica, Arial, Verdana, sans-serif;
 }
 #page .fancy-header .color-accent span {
   color: var(--the7-accent-color);
@@ -6934,10 +6934,10 @@ h3.gform_title,
   font:    20px / 24px "Arial", Helvetica, Arial, Verdana, sans-serif;
 }
 .top-bar .mini-wpml {
-  font:  400 15px / 21px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:  400 15px / 21px "Roboto", Helvetica, Arial, Verdana, sans-serif;
 }
 .dt-mobile-header .mini-wpml {
-  font:   500 16px / 20px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:   500 16px / 20px "Roboto", Helvetica, Arial, Verdana, sans-serif;
 }
 .popup-message-style .wpcf7-validation-errors,
 .popup-message-style .wpcf7-mail-sent-ok,
@@ -7484,7 +7484,7 @@ h3.gform_title,
   background: #42b14b !important;
 }
 #main .wpb_alert strong {
-  font:  normal 700 16px / 26px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+  font:  normal 700 16px / 26px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   text-transform: none;
 }
 .uvc-heading.uvc-heading-default-font-sizes .uvc-main-heading h1 {

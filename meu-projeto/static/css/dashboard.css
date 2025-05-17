@@ -4,7 +4,6 @@
     gap: 20px;
     width: 100%;
     margin-inline: auto;
-    padding: 0 20px;
     box-sizing: border-box;
 }
 
@@ -172,24 +171,31 @@
 }
 
 
+
 .dark-mode .stat-card {
-    background-color: #333;
+    background-color: #181A1B;
 }
     
 .dark-mode .extra-card {
-    background-color: #333;
+    background-color: #181A1B;
+    scrollbar-color: #444 #1e1e1e; /* thumb track */
+    scrollbar-width: thin;
+}
+
+.dark-mode .dev {
+    color: #ffffff;
 }
 
 .dark-mode .dashboard-footer {
-    background-color: #333;
+    background-color: #181A1B;
 }
 
 .dark-mode .performance-container {
-    background-color: #333;
+    background-color: #181A1B;
 }
 
 .dark-mode .vaga-card {
-    background-color: #1e1e1e;
+    background-color: #181A1B;
 }
 
 .dark-mode .stat-value {
@@ -201,9 +207,9 @@
 }
 
 .dark-mode .parceiro-empresa {
-    color: #E0E0E0;
-    
+color: #2ABC68;
 }
+
 
 .dark-mode .parceiro-card {
     background-color: #121212;
@@ -219,7 +225,7 @@
 }
 
 .dark-mode .vaga-empresa {
-    color: #3BB951;
+    color: #2ABC68;
 }
 
 .dark-mode .vaga-title {
@@ -255,7 +261,7 @@
 }
 
 .dark-mode .vaga-tag {
-    color: #3BB951;
+    color: #2ABC68;
     background-color: #333;
 }
 
@@ -418,7 +424,7 @@ overflow-y: auto; /* Permite scroll apenas no body, não em elementos internos *
     font-weight: 900;
     position: absolute;
     left: 0;
-    color: #3BB951;
+    color: #2ABC68;
 }
 
 @media (max-width: 1200px) {
@@ -457,15 +463,15 @@ border-radius: 8px;
 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 padding: 12px;
 transition: all 0.2s ease;
-border-left: 3px solid #3BB951;
-font-family: 'Poppins', sans-serif;
+border-left: 3px solid #2ABC68;
+font-family: 'Roboto', sans-serif;
 font-size: 13px;
 color: #34495e;
 cursor: pointer;
 display: flex;
 flex-direction: column;
-height: 200px;
-width: 250px;
+height: auto;
+width: 500px;
 
 }
 
@@ -514,7 +520,7 @@ margin-bottom: 10px;
 
 .vaga-tag {
 background-color: #f1f8fe;
-color: #3BB951;
+color: #2ABC68;
 padding: 3px 8px;
 border-radius: 12px;
 font-size: 11px;
@@ -539,7 +545,7 @@ font-weight: 500;
 font-size: 14px;
 text-align: center;
 margin-top: 10px;
-background-color: #3BB951;
+background-color: #2ABC68;
 border-radius: 6px;
 padding: 8px 12px;
 
@@ -562,6 +568,8 @@ padding: 15px;
 .vaga-titulo {
 font-size: 14px;
 }
+
+
 }
 
 /* Estilo para os cards de parceiros/cursos */
@@ -613,8 +621,8 @@ height: 40px;
 
 .parceiro-empresa {
 font-size: 12px;
-color: #3BB951;
-margin-top: -5px;
+color: #2ABC68;
+margin-top: -1px;
 }
 
 
@@ -758,4 +766,5 @@ text-decoration: underline;
 
 
 }
+
 

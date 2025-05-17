@@ -64,8 +64,11 @@
         </nav>
 
         <!-- Container da barra de progresso -->
-        <h0 style="text-align: center; margin-top: 10px; margin-bottom: 20px;font-size: 20px; color: #ff0000; font-weight: bold;">PLATAFORMA EM DESENVOLVIMENTO</h0>
-        <div class="portfolio-progress">
+            <div class="dev">
+            <h2 id="dev">PLATAFORMA EM DESENVOLVIMENTO</h2>
+            </div>        
+
+            <div class="portfolio-progress">
             <span class="progress-percentage">0%</span>
             <div class="progress-container">
                 <div class="progress-bar">
@@ -77,12 +80,12 @@
     </aside>
 
     <!-- Conteúdo Principal -->
-    <main class="main-content">
+<!-- Conteúdo Principal -->
+<main class="main-content">
     <div class="header">
         <h1 class="page-title-cv" id="page-title-cv" style="font-size: 28.8px;">Meu <span style="color: #3BB951;">Currículo </span></h1>
         <p class="page-subtitle" id="page-subtitle">Deixe seu currículo sempre atualizado para ser encontrado por recrutadores com facilidade</p>
         
-        <!-- Adicione esta div com os botões -->
         <div class="cv-mode-buttons">
             <button id="edit-cv-btn" class="edit-cv-btn active-mode">
                 <i class="fas fa-edit"></i> Editar Currículo
@@ -96,28 +99,35 @@
         </div>
     </div>
         
-        <div class="dashboard-content">
-            <div class="cv-container">
-                <div class="cv-header cv-flex-container">
-                    <div class="user-profile">
-                        <div class="avatar-container">
-                            <img id="modal-avatar-cv" src="https://ui-avatars.com/api/?name=Usuário&background=4a90e2&color=fff" alt="Usuário" class="user-avatar-cv">
-                            <button class="change-photo-btn" id="change-photo-btn">Alterar foto</button>
-                        </div>
+    <div class="dashboard-content">
+        <div class="cv-container">
+            <div class="cv-header cv-flex-container">
+                <div class="user-profile">
+                    <div class="avatar-container">
+                        <img id="modal-avatar-cv" src="https://ui-avatars.com/api/?name=Usuário&background=4a90e2&color=fff" alt="Usuário" class="user-avatar-cv">
+                        <button class="change-photo-btn" id="change-photo-btn">Alterar foto</button>
+                    </div>
+                </div>
+
+                <div class="cv-info-group">
+                    <div class="cv-personal-info">
+                        <h2 id="user-name-cv" style="color: #3BB951;">Nome do Usuário</h2>
+                        <p id="user-desired-job"><i class="fas fa-briefcase"></i> 
+                            <span class="cv-value" data-placeholder="Qual cargo você deseja?"></span>
+                        </p>
+                        <p id="user-location"><i class="fas fa-map-marker-alt"></i> 
+                            <span class="cv-value" data-placeholder="Cidade, Estado"></span>
+                        </p>
+                        <p id="user-phone"><i class="fas fa-phone"></i> 
+                            <span class="cv-value" data-placeholder="Telefone"></span>
+                        </p>
                     </div>
 
-                    <div class="cv-info-group">
-                        <div class="cv-personal-info">
-                            <h2 id="user-name-cv" style="color: #3BB951;">Nome do Usuário</h2>
-                            <p id="user-desired-job"><i class="fas fa-briefcase"></i> <span class="cv-value">Cargo Desejado</span></p>
-                            <p id="user-location"><i class="fas fa-map-marker-alt"></i> <span class="cv-value">Cidade, Estado</span></p>
-                            <p id="user-phone"><i class="fas fa-phone"></i> <span class="cv-value">Telefone</span></p>
-                        </div>
-
-                        <div class="cv-about-me">
-                            <h3><i class="fas fa-user"></i> Sobre Mim</h3>
-                            <p id="user-bio" class="cv-text">Biografia do usuário...</p>
-                        </div>
+                    <div class="cv-about-me">
+                        <h3><i class="fas fa-user"></i> Sobre Mim</h3>
+                        <p id="user-bio" class="cv-text" data-placeholder="Fale um pouco sobre você..."></p>
+                    </div>
+                        <!-- Fim das Informações pessoais -->
                     </div>
                 </div>
 
@@ -260,7 +270,7 @@
     <script src="../static/js/dashboard.js"></script>
     <script src="../static/js/menu.js"></script>
     <script src="../static/js/progress_cv.js"></script>
-
+    <script src="../static/js/cv_data.js"></script>
 
 
 <!-- Modal de Visualização como Recrutador -->
@@ -276,7 +286,7 @@
                     <img id="modal-avatar" src="https://ui-avatars.com/api/?name=Usuário&background=4a90e2&color=fff" alt="Candidato" class="candidate-avatar">
                     <div class="candidate-info">
                         <h2 id="modal-name">Nome do Candidato</h2>
-                        <p id="modal-position"><i class="fas fa-briefcase"></i> Cargo Desejado</p>
+                        <p id="modal-position"><i class="fas fa-briefcase"></i> Qual cargo você deseja?</p>
                         <p id="modal-email"><i class="fas fa-envelope"></i> email@exemplo.com</p>
                         <p id="modal-location"><i class="fas fa-map-marker-alt"></i> Localização</p>
                     </div>

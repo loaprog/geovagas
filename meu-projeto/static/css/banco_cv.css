@@ -270,7 +270,7 @@
 /* Estilo para o botão de ALERTA */
 .custom-swal-popup {
     border-radius: 15px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .swal2-title {
@@ -281,7 +281,7 @@
 @media (max-width: 768px) {
     .custom-swal-popup {
         border-radius: 15px;
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
     
     .swal2-title {

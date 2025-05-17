@@ -1229,7 +1229,7 @@
   .page-title-responsive-enabled.page-title h1 *,
   .page-title-responsive-enabled.page-title h1 a:hover,
   #page .page-title-responsive-enabled.page-title .entry-title {
-    font:   700 24px / 34px "Poppins", Helvetica, Arial, Verdana, sans-serif;
+    font:   700 24px / 34px "Roboto", Helvetica, Arial, Verdana, sans-serif;
   }
   .page-title-responsive-enabled.page-title.breadcrumbs-mobile-off .breadcrumbs {
     display: none;
