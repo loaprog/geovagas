@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="../static/css/interface.css" />
     <link rel="stylesheet" href="../static/css/dashboard.css" />
     <link rel="stylesheet" href="../static/css/student_dashboard_cv.css" />
+
+
+    <link rel="stylesheet" href="../static/css/animation.css">
+    <link rel="stylesheet" href="../static/css/vagas.css">
+    <link rel="stylesheet" href="../static/css/filter.css">
+    <link rel="stylesheet" href="../static/css/paginacao.css">
+    <link rel="stylesheet" href="../static/css/banco_cv.css">
+    <link rel="stylesheet" href="../static/css/adicionar_vagas.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -41,10 +50,10 @@
                 <i class="fas fa-home"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="student_dashboard_courses" class="nav-item">
+            <!-- <a href="student_dashboard_courses" class="nav-item">
                 <i class="fas fa-book"></i>
                 <span>Cursos</span>
-            </a>
+            </a> -->
             <a href="student_dashboard_cv" class="nav-item">
                 <i class="fas fa-file-alt"></i>
                 <span>Meu Currículo</span>
@@ -53,20 +62,20 @@
                 <i class="fas fa-briefcase"></i>
                 <span>Vagas</span>
             </a>
-            <a href="student_dashboard_chat" class="nav-item">
+            <!-- <a href="student_dashboard_chat" class="nav-item">
                 <i class="fas fa-comments"></i>
                 <span>Chat</span>
             </a>
             <a href="student_dashboard_community" class="nav-item">
                 <i class="fas fa-users"></i>
                 <span>Comunidade</span>
-            </a>
+            </a> -->
         </nav>
 
         <!-- Container da barra de progresso -->
-            <div class="dev">
+            <!-- <div class="dev">
             <h2 id="dev">PLATAFORMA EM DESENVOLVIMENTO</h2>
-            </div>           
+            </div>            -->
         <div class="portfolio-progress">
             <span class="progress-percentage">0%</span>
             <div class="progress-container">
@@ -89,10 +98,98 @@
             </p>
         </div>
         
-        <div class="dashboard-content">
-            <div class="jobs-container">
-                <!-- Exemplo de vagas, pode ser populado dinamicamente -->
-            
+
+    <main id="main">
+        <section class="about-hero-section">
+            <div class="hero-overlay"></div>
+        </section>
+
+        <section class="quick-search-section">
+                <div class="quick-search-container">
+                    <div class="search-fields">
+                        <div class="search-group">
+                            <label for="job-search"><i class="fas fa-search"></i> Qual vaga você procura?</label>
+                            <input type="text" id="job-search" placeholder="Digite o nome da vaga ou cargo">
+                        </div>
+                        
+                        <div class="search-group">
+                            <label for="state-search"><i class="fas fa-map-marker-alt"></i> Estado</label>
+                            <select id="state-search" class="state-select">
+                                <option value="">Todos os estados</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                        
+                        <button id="quick-search-btn" class="btn-primary">
+                            <i class="fas fa-search"></i> Buscar Vagas
+                        </button>
+
+                        <button id="reset-filters-btn" class="btn-secondary">
+                            <i class="fas fa-times"></i> Limpar
+                        </button>
+                    </div>
+                </div>
+        </section>
+
+        <section class="featured-jobs-section">
+
+
+
+
+
+
+
+
+                <div class="jobs-list" id="featured-jobs-container">
+                    <div class="loading-jobs">
+                        <i class="fas fa-spinner fa-spin"></i> Carregando vagas em destaque...
+                    </div>
+                </div>
+            </div>
+            <div class="pagination-container" id="pagination-container">
+                <button id="prev-page" class="pagination-btn" disabled>
+                    <i class="fas fa-chevron-left"></i> 
+                </button>
+                <div class="page-numbers" id="page-numbers"></div>
+                <button id="next-page" class="pagination-btn">
+                     <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+
+
+
+
+
+
+
+
             </div>
         </div>
     </main>
@@ -102,6 +199,15 @@
     <script src="../static/js/dashboard.js"></script>
     <script src="../static/js/menu.js"></script>
     <script src="../static/js/progress_cv.js"></script>
+
+
+    <script src="../static/js/index.js"></script>
+    <script src="../static/js/vagas.js"></script>
+    <script src="../static/js/adicionar_vagas.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 </body>
 </html>

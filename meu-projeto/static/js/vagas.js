@@ -60,11 +60,13 @@ function filterJobs() {
     }
 
     filteredJobs = allJobs.filter(job => {
-        const matchesJob = isEmpty(jobTerm) || 
-                         (job.vaga_nome && job.vaga_nome.toLowerCase().includes(jobTerm)) ||
-                         (job.descricao && job.descricao.toLowerCase().includes(jobTerm)) ||
-                         (job.empresa && job.empresa.toLowerCase().includes(jobTerm)) ||
-                         (job.tags && job.tags.some(tag => tag.toLowerCase().includes(jobTerm)));
+    const normalizedJobTerm = normalizeText(jobTerm);
+
+    const matchesJob = isEmpty(jobTerm) || 
+        (job.vaga_nome && normalizeText(job.vaga_nome).includes(normalizedJobTerm)) ||
+        // (job.descricao && normalizeText(job.descricao).includes(normalizedJobTerm)) ||
+        // (job.empresa && normalizeText(job.empresa).includes(normalizedJobTerm)) ||
+        (job.tags && job.tags.some(tag => normalizeText(tag).includes(normalizedJobTerm)));
 
         const matchesState = isEmpty(stateTerm) || 
                            (job.estado && job.estado.toUpperCase().trim() === stateTerm.toUpperCase().trim());
@@ -76,6 +78,11 @@ function filterJobs() {
     currentPage = 1;
     renderJobsForCurrentPage();
 }
+
+function normalizeText(text) {
+    return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 
 function renderJobsForCurrentPage() {
     const container = document.getElementById('featured-jobs-container');
@@ -278,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
     
     $("#job-search").autocomplete({
-        source: jobTitles,
+        // source: jobTitles,
         minLength: 2,
         delay: 100
     });

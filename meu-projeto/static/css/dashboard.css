@@ -768,3 +768,33 @@ text-decoration: underline;
 }
 
 
+
+.dark-mode .quick-search-section {
+    background-color: #1E2021;
+}
+
+.dark-mode .quick-search-container {
+    background-color: #181A1B;
+}
+
+.dark-mode .featured-jobs-section {
+    background-color: #181A1B;
+}
+
+
+
+.dark-mode .job-card {
+    background-color: #1E2021;
+}
+
+.dark-mode .job-header {
+    color: #ffffff;
+}
+
+.dark-mode .job-header .h3 {
+    color: #ffffff;
+}
+
+.dark-mode .job-search {
+    color: #1E2021;
+}
