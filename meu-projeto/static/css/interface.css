@@ -505,3 +505,7 @@ body.dark-mode .progress-bar {
     font-size: 15px;
     font-weight: bold;
 }
+
+ .progress-label {
+    margin-top: 10px;
+}

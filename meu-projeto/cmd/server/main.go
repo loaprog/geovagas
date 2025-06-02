@@ -66,6 +66,7 @@ func main() {
 
 	// Endpoints Sistema
 	http.HandleFunc("/register_user/", handlers.RegisterUserHandler(db))
+	http.HandleFunc("/alterar_dados/", handlers.UpdateStudentProfileHandler(db))
 	http.HandleFunc("/recuperar_senha/", handlers.RecuperarSenhaHandler(db))
 	http.HandleFunc("/alterar_senha/", handlers.AlterarSenhaHandler(db))
 	http.HandleFunc("/login_api/", handlers.LoginApiHandler(db))

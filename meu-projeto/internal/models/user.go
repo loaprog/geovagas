@@ -32,6 +32,7 @@ type Student struct {
     Bio           pgtype.Text   `json:"bio"`
     CreatedAt     time.Time     `json:"created_at"`
     PhotoPath     pgtype.Text   `json:"foto_path"`
+	Portfolio     pgtype.Text   `json:"portfolio"`
 }
 
 type StudentCourse struct {

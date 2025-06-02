@@ -78,7 +78,7 @@ func getStudentData(ctx context.Context, db *pgxpool.Pool, userID string) (*mode
     defer conn.Release()
 
     query := `
-        SELECT s.user_id, s.telefone, s.cidade, s.estado, s.curriculo, s.cargo_desejado, 
+        SELECT s.user_id, s.telefone, s.cidade, s.estado, s.curriculo, s.portfolio, s.cargo_desejado, 
                s.qgis, s.arcgis, s.autocad, s.python, s.ingles, 
                s.oratoria, s.entrevista, s.bio, s.foto_path
         FROM techvagas.students s
@@ -88,7 +88,7 @@ func getStudentData(ctx context.Context, db *pgxpool.Pool, userID string) (*mode
     var student models.Student
     err = conn.QueryRow(ctx, query, userID).Scan(
         &student.UserID, &student.Phone, &student.City, &student.State, 
-        &student.ResumePath, &student.DesiredJob, &student.QGIS, &student.ArcGIS, 
+        &student.ResumePath, &student.Portfolio, &student.DesiredJob, &student.QGIS, &student.ArcGIS, 
         &student.AutoCAD, &student.Python, &student.English, &student.Oratory, 
         &student.Interview, &student.Bio, &student.PhotoPath,
     )

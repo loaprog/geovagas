@@ -9,6 +9,8 @@ import (
     "errors"
     "github.com/jackc/pgx/v5/pgconn"
 	"math/rand"
+    "strconv"
+	"strings"
 
 	"techvagas/internal/models"
 	"techvagas/internal/drive"
@@ -188,4 +190,156 @@ func generateToken(n int) string {
 		b[i] = letters[rand.Intn(len(letters))]
 	}
 	return string(b)
+}
+
+func studentToMap(s models.Student) map[string]string {
+    return map[string]string{
+        "telefone":       s.Phone.String,
+        "cidade":         s.City.String,
+        "estado":         s.State.String,
+        "cargo_desejado": s.DesiredJob.String,
+        "qgis":           s.QGIS.String,
+        "arcgis":         s.ArcGIS.String,
+        "autocad":        s.AutoCAD.String,
+        "python":         s.Python.String,
+        "ingles":         s.English.String,
+        "oratoria":       s.Oratory.String,
+        "entrevista":     s.Interview.String,
+        "bio":            s.Bio.String,
+        "foto_path":      s.PhotoPath.String,
+        "curriculo":      s.ResumePath.String,
+        "portfolio":      s.Portfolio.String,
+    }
+}
+
+func UpdateStudentProfileHandler(db *pgxpool.Pool) http.HandlerFunc {
+    return func(w http.ResponseWriter, r *http.Request) {
+        log.Println("Iniciando UpdateStudentProfileHandler")
+
+        if r.Method != http.MethodPost {
+            log.Println("Método inválido:", r.Method)
+            http.Error(w, "Método não permitido", http.StatusMethodNotAllowed)
+            return
+        }
+
+        err := r.ParseMultipartForm(10 << 20) // 10MB max
+        if err != nil {
+            log.Printf("Erro ao fazer ParseMultipartForm: %v\n", err)
+            http.Error(w, "Erro ao processar formulário", http.StatusBadRequest)
+            return
+        }
+
+        userID := r.FormValue("user_id")
+        if userID == "" {
+            log.Println("user_id ausente no formulário")
+            http.Error(w, "user_id é obrigatório", http.StatusBadRequest)
+            return
+        }
+
+        log.Println("user_id:", userID)
+
+        var student models.Student
+        uid, err := strconv.Atoi(userID)
+        if err != nil {
+            log.Printf("user_id inválido: %v\n", err)
+            http.Error(w, "user_id inválido", http.StatusBadRequest)
+            return
+        }
+        student.UserID = uid
+
+        query := `
+            SELECT telefone, cidade, estado, cargo_desejado,
+                   qgis, arcgis, autocad, python, ingles,
+                   oratoria, entrevista, bio, foto_path,
+                   curriculo, portfolio
+            FROM techvagas.students
+            WHERE user_id = $1
+        `
+
+        err = db.QueryRow(context.Background(), query, userID).Scan(
+            &student.Phone, &student.City, &student.State, &student.DesiredJob,
+            &student.QGIS, &student.ArcGIS, &student.AutoCAD, &student.Python, &student.English,
+            &student.Oratory, &student.Interview, &student.Bio, &student.PhotoPath,
+            &student.ResumePath, &student.Portfolio,
+        )
+        if err != nil {
+            log.Printf("Erro ao buscar perfil do estudante: %v\n", err)
+            http.Error(w, "Erro ao buscar perfil do estudante", http.StatusInternalServerError)
+            return
+        }
+
+        existingProfile := studentToMap(student)
+
+
+        inputFields := []string{
+            "telefone", "cidade", "estado", "cargo_desejado",
+            "qgis", "arcgis", "autocad", "python", "ingles",
+            "oratoria", "entrevista", "bio", "foto_path",
+            "curriculo", "portfolio",
+        }
+
+        formInput := make(map[string]string)
+        iguais := make(map[string]string)
+        diferentes := make(map[string]map[string]string)
+
+        for _, field := range inputFields {
+            formValue := r.FormValue(field)
+            formInput[field] = formValue
+
+            if formValue == existingProfile[field] {
+                iguais[field] = formValue
+            } else {
+                diferentes[field] = map[string]string{
+                    "antes":  existingProfile[field],
+                    "depois": formValue,
+                }
+            }
+        }
+
+        // Atualizar apenas se houverem campos diferentes
+        if len(diferentes) > 0 {
+            var setClauses []string
+            var args []interface{}
+            argIndex := 1
+
+            for field, valores := range diferentes {
+                setClauses = append(setClauses, fmt.Sprintf("%s = $%d", field, argIndex))
+                args = append(args, valores["depois"])
+                argIndex++
+            }
+
+            // Adiciona o user_id como último argumento
+            args = append(args, uid)
+            updateQuery := fmt.Sprintf(`
+                UPDATE techvagas.students
+                SET %s
+                WHERE user_id = $%d
+            `, strings.Join(setClauses, ", "), argIndex)
+
+            log.Println("Executando UPDATE:", updateQuery)
+
+            _, err = db.Exec(context.Background(), updateQuery, args...)
+            if err != nil {
+                log.Printf("Erro ao atualizar perfil do estudante: %v\n", err)
+                http.Error(w, "Erro ao atualizar perfil", http.StatusInternalServerError)
+                return
+            }
+
+            log.Println("Perfil atualizado com sucesso.")
+        } else {
+            log.Println("Nenhum dado alterado. Nenhuma atualização realizada.")
+        }
+
+        response := map[string]interface{}{
+            "user_id":    userID,
+            "entrada":    formInput,
+            "iguais":     iguais,
+            "diferentes": diferentes,
+            "mensagem":   "Perfil atualizado com sucesso (se havia diferença)",
+        }
+
+        w.Header().Set("Content-Type", "application/json")
+        w.WriteHeader(http.StatusOK)
+        json.NewEncoder(w).Encode(response)
+    }
 }
